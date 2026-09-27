@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Environment files - NEVER commit real secrets
+.env
+.env.local
+.env.production
+.env.development
+
+# Build output
+dist/
+build/
+
+# Uploads (runtime user content)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local QA / verification screenshots - never commit
+/*.png
+/backend/tmp-*.png

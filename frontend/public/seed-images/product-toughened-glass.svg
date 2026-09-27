@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Toughened Glass - Karigor Decore placeholder image">
+  <title>Toughened Glass - Karigor Decore placeholder</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbfaf7"/>
+      <stop offset="1" stop-color="#efe9dc"/>
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgba(203,222,229,0.85)"/>
+      <stop offset="1" stop-color="rgba(233,241,244,0.85)"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="rgba(22,23,27,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+  <ellipse cx="600" cy="752" rx="460" ry="16" fill="rgba(22,23,27,0.08)"/><rect x="300" y="160" width="520" height="480" rx="10" fill="rgba(22,23,27,0.08)" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><polygon points="406,230 874,230 900,256 900,644 874,670 406,670 380,644 380,256" fill="url(#glassGrad)" stroke="#23242a" stroke-width="7" stroke-linejoin="round"/><polygon points="900,230 658,230 484,670 380,670" fill="rgba(255,255,255,0.24)"/><line x1="390" y1="232" x2="390" y2="668" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="382" y1="660" x2="898" y2="660" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><polyline points="420,230 380,230 380,270" fill="none" stroke="#ad8b52" stroke-width="7" stroke-linecap="round"/><polyline points="860,230 900,230 900,270" fill="none" stroke="#ad8b52" stroke-width="7" stroke-linecap="round"/><polyline points="860,670 900,670 900,630" fill="none" stroke="#ad8b52" stroke-width="7" stroke-linecap="round"/><polyline points="420,670 380,670 380,630" fill="none" stroke="#ad8b52" stroke-width="7" stroke-linecap="round"/>
+  <g font-family="'Sora','Inter',system-ui,sans-serif">
+    <rect x="70" y="806" width="46" height="7" rx="3.5" fill="#ad8b52"/>
+    <text x="70" y="858" font-size="30" font-weight="600" fill="#1d1e23">Toughened Glass</text>
+    <text x="1130" y="858" font-size="21" fill="rgba(29,30,35,0.55)" text-anchor="end">Karigor Decore - placeholder 09 / 48</text>
+  </g>
+</svg>

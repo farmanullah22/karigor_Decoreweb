@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Wall Panel - Karigor Decore placeholder image">
+  <title>Wall Panel - Karigor Decore placeholder</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbfaf7"/>
+      <stop offset="1" stop-color="#efe9dc"/>
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgba(203,222,229,0.85)"/>
+      <stop offset="1" stop-color="rgba(233,241,244,0.85)"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="rgba(22,23,27,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+  <rect x="220" y="190" width="100" height="470" rx="4" fill="rgba(22,23,27,0.07)" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><line x1="270" y1="204" x2="270" y2="646" stroke="rgba(22,23,27,0.38)" stroke-width="2" opacity="0.6"/><rect x="330" y="190" width="100" height="470" rx="4" fill="url(#glassGrad)" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><line x1="380" y1="204" x2="380" y2="646" stroke="rgba(22,23,27,0.38)" stroke-width="2" opacity="0.6"/><rect x="440" y="190" width="100" height="470" rx="4" fill="rgba(22,23,27,0.07)" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><line x1="490" y1="204" x2="490" y2="646" stroke="rgba(22,23,27,0.38)" stroke-width="2" opacity="0.6"/><rect x="550" y="190" width="100" height="470" rx="4" fill="url(#glassGrad)" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><line x1="600" y1="204" x2="600" y2="646" stroke="rgba(22,23,27,0.38)" stroke-width="2" opacity="0.6"/><rect x="660" y="190" width="100" height="470" rx="4" fill="rgba(22,23,27,0.07)" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><line x1="710" y1="204" x2="710" y2="646" stroke="rgba(22,23,27,0.38)" stroke-width="2" opacity="0.6"/><rect x="770" y="190" width="100" height="470" rx="4" fill="url(#glassGrad)" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><line x1="820" y1="204" x2="820" y2="646" stroke="rgba(22,23,27,0.38)" stroke-width="2" opacity="0.6"/><rect x="880" y="190" width="100" height="470" rx="4" fill="rgba(22,23,27,0.07)" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><line x1="930" y1="204" x2="930" y2="646" stroke="rgba(22,23,27,0.38)" stroke-width="2" opacity="0.6"/><line x1="200" y1="415.6" x2="1000" y2="415.6" stroke="rgba(22,23,27,0.38)" stroke-width="4"/><rect x="200" y="164" width="800" height="8" rx="4" fill="#ad8b52"/><rect x="200" y="154" width="800" height="22" rx="11" fill="#ad8b52" opacity="0.16"/><rect x="214" y="670" width="772" height="12" rx="6" fill="rgba(22,23,27,0.08)"/>
+  <g font-family="'Sora','Inter',system-ui,sans-serif">
+    <rect x="70" y="806" width="46" height="7" rx="3.5" fill="#ad8b52"/>
+    <text x="70" y="858" font-size="30" font-weight="600" fill="#1d1e23">Wall Panel</text>
+    <text x="1130" y="858" font-size="21" fill="rgba(29,30,35,0.55)" text-anchor="end">Karigor Decore - placeholder 16 / 48</text>
+  </g>
+</svg>

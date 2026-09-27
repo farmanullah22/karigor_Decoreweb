@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Sliding Folding Partition - Karigor Decore placeholder image">
+  <title>Sliding Folding Partition - Karigor Decore placeholder</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbfaf7"/>
+      <stop offset="1" stop-color="#efe9dc"/>
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgba(203,222,229,0.85)"/>
+      <stop offset="1" stop-color="rgba(233,241,244,0.85)"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="rgba(22,23,27,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+  <rect x="150" y="160" width="900" height="18" fill="#23242a"/><polygon points="238,190 416,190 386,660 208,660" fill="url(#glassGrad)" stroke="#23242a" stroke-width="6" stroke-linejoin="round"/><circle cx="312" cy="178" r="9" fill="#23242a"/><polygon points="362,190 540,190 570,660 392,660" fill="url(#glassGrad)" stroke="#23242a" stroke-width="6" stroke-linejoin="round"/><circle cx="466" cy="178" r="9" fill="#23242a"/><polygon points="606,190 784,190 754,660 576,660" fill="url(#glassGrad)" stroke="#23242a" stroke-width="6" stroke-linejoin="round"/><circle cx="680" cy="178" r="9" fill="#23242a"/><polygon points="730,190 908,190 938,660 760,660" fill="url(#glassGrad)" stroke="#23242a" stroke-width="6" stroke-linejoin="round"/><circle cx="834" cy="178" r="9" fill="#23242a"/><rect x="908" y="365" width="10" height="120" rx="5" fill="#ad8b52"/><line x1="150" y1="686" x2="1050" y2="686" stroke="#23242a" stroke-width="8"/><rect x="150" y="706" width="900" height="12" rx="6" fill="rgba(22,23,27,0.08)"/>
+  <g font-family="'Sora','Inter',system-ui,sans-serif">
+    <rect x="70" y="806" width="46" height="7" rx="3.5" fill="#ad8b52"/>
+    <text x="70" y="858" font-size="30" font-weight="600" fill="#1d1e23">Sliding Folding Partition</text>
+    <text x="1130" y="858" font-size="21" fill="rgba(29,30,35,0.55)" text-anchor="end">Karigor Decore - placeholder 15 / 48</text>
+  </g>
+</svg>

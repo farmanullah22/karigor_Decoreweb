@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Residential Windows - Karigor Decore placeholder image">
+  <title>Residential Windows - Karigor Decore placeholder</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbfaf7"/>
+      <stop offset="1" stop-color="#efe9dc"/>
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgba(203,222,229,0.85)"/>
+      <stop offset="1" stop-color="rgba(233,241,244,0.85)"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="rgba(22,23,27,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+  <circle cx="985" cy="210" r="54" fill="none" stroke="#ad8b52" stroke-width="6"/><rect x="196" y="560" width="12" height="100" fill="rgba(22,23,27,0.38)"/><circle cx="202" cy="520" r="62" fill="rgba(22,23,27,0.08)"/><rect x="320" y="350" width="560" height="310" fill="rgba(22,23,27,0.08)" stroke="#23242a" stroke-width="9"/><rect x="294" y="322" width="612" height="26" fill="#23242a"/><rect x="397" y="416" width="84" height="96" fill="url(#glassGrad)" stroke="#23242a" stroke-width="5"/><line x1="439" y1="416" x2="439" y2="512" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><rect x="558" y="416" width="84" height="96" fill="url(#glassGrad)" stroke="#23242a" stroke-width="5"/><line x1="600" y1="416" x2="600" y2="512" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><rect x="719" y="416" width="84" height="96" fill="url(#glassGrad)" stroke="#23242a" stroke-width="5"/><line x1="761" y1="416" x2="761" y2="512" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><rect x="397" y="556" width="84" height="96" fill="url(#glassGrad)" stroke="#23242a" stroke-width="5"/><line x1="439" y1="556" x2="439" y2="652" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><rect x="558" y="556" width="84" height="96" fill="url(#glassGrad)" stroke="#23242a" stroke-width="5"/><line x1="600" y1="556" x2="600" y2="652" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><rect x="719" y="556" width="84" height="96" fill="url(#glassGrad)" stroke="#23242a" stroke-width="5"/><line x1="761" y1="556" x2="761" y2="652" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><rect x="560" y="596" width="120" height="64" fill="url(#glassGrad)" stroke="#23242a" stroke-width="6"/><rect x="614" y="620" width="8" height="40" rx="4" fill="#ad8b52"/><rect x="240" y="664" width="720" height="12" rx="6" fill="rgba(22,23,27,0.08)"/>
+  <g font-family="'Sora','Inter',system-ui,sans-serif">
+    <rect x="70" y="806" width="46" height="7" rx="3.5" fill="#ad8b52"/>
+    <text x="70" y="858" font-size="30" font-weight="600" fill="#1d1e23">Residential Windows</text>
+    <text x="1130" y="858" font-size="21" fill="rgba(29,30,35,0.55)" text-anchor="end">Karigor Decore - placeholder 31 / 48</text>
+  </g>
+</svg>

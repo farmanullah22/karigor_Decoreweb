@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Showroom Facade - Karigor Decore placeholder image">
+  <title>Showroom Facade - Karigor Decore placeholder</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbfaf7"/>
+      <stop offset="1" stop-color="#efe9dc"/>
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgba(203,222,229,0.85)"/>
+      <stop offset="1" stop-color="rgba(233,241,244,0.85)"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="rgba(22,23,27,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+  <rect x="170" y="150" width="860" height="120" fill="rgba(22,23,27,0.08)" stroke="rgba(22,23,27,0.38)" stroke-width="3"/><line x1="277.5" y1="156" x2="277.5" y2="264" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="385" y1="156" x2="385" y2="264" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="492.5" y1="156" x2="492.5" y2="264" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="600" y1="156" x2="600" y2="264" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="707.5" y1="156" x2="707.5" y2="264" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="815" y1="156" x2="815" y2="264" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="922.5" y1="156" x2="922.5" y2="264" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="1030" y1="156" x2="1030" y2="264" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><rect x="170" y="268" width="860" height="10" fill="#ad8b52" opacity="0.85"/><rect x="176" y="284" width="203" height="406" rx="0" fill="url(#glassGrad)"/><polygon points="379,284 267.35,284 216.6,690 176,690" fill="rgba(255,255,255,0.12)"/><rect x="391" y="284" width="203" height="406" rx="0" fill="url(#glassGrad)"/><polygon points="594,284 482.35,284 431.6,690 391,690" fill="rgba(255,255,255,0.12)"/><rect x="606" y="284" width="203" height="406" rx="0" fill="url(#glassGrad)"/><polygon points="809,284 697.35,284 646.6,690 606,690" fill="rgba(255,255,255,0.12)"/><rect x="821" y="284" width="203" height="406" rx="0" fill="url(#glassGrad)"/><polygon points="1024,284 912.35,284 861.6,690 821,690" fill="rgba(255,255,255,0.12)"/><rect x="821" y="284" width="203" height="406" fill="rgba(22,23,27,0.1)" stroke="#23242a" stroke-width="6"/><line x1="922.5" y1="300" x2="922.5" y2="690" stroke="#23242a" stroke-width="6"/><rect x="906.5" y="470" width="9" height="110" rx="4" fill="#ad8b52"/><rect x="929.5" y="470" width="9" height="110" rx="4" fill="#ad8b52"/><rect x="380" y="284" width="10" height="406" fill="#23242a"/><rect x="595" y="284" width="10" height="406" fill="#23242a"/><rect x="810" y="284" width="10" height="406" fill="#23242a"/><rect x="170" y="284" width="860" height="406" fill="none" stroke="#23242a" stroke-width="10"/><rect x="160" y="696" width="880" height="18" rx="6" fill="rgba(22,23,27,0.08)"/>
+  <g font-family="'Sora','Inter',system-ui,sans-serif">
+    <rect x="70" y="806" width="46" height="7" rx="3.5" fill="#ad8b52"/>
+    <text x="70" y="858" font-size="30" font-weight="600" fill="#1d1e23">Showroom Facade</text>
+    <text x="1130" y="858" font-size="21" fill="rgba(29,30,35,0.55)" text-anchor="end">Karigor Decore - placeholder 41 / 48</text>
+  </g>
+</svg>

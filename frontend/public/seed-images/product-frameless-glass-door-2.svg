@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Frameless Glass Door - View 2 - Karigor Decore placeholder image">
+  <title>Frameless Glass Door - View 2 - Karigor Decore placeholder</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbfaf7"/>
+      <stop offset="1" stop-color="#efe9dc"/>
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="rgba(203,222,229,0.85)"/>
+      <stop offset="1" stop-color="rgba(233,241,244,0.85)"/>
+    </linearGradient>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="rgba(22,23,27,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#grid)"/>
+  <ellipse cx="600" cy="752" rx="380" ry="16" fill="rgba(22,23,27,0.08)"/><rect x="400" y="170" width="190" height="560" rx="0" fill="url(#glassGrad)"/><polygon points="590,170 485.5,170 438,730 400,730" fill="rgba(255,255,255,0.2)"/><line x1="408" y1="170" x2="408" y2="730" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="400" y1="722" x2="590" y2="722" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><rect x="400" y="170" width="190" height="560" fill="none" stroke="#23242a" stroke-width="7"/><rect x="612" y="170" width="190" height="560" rx="0" fill="url(#glassGrad)"/><polygon points="802,170 697.5,170 650,730 612,730" fill="rgba(255,255,255,0.2)"/><line x1="620" y1="170" x2="620" y2="730" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><line x1="612" y1="722" x2="802" y2="722" stroke="rgba(22,23,27,0.38)" stroke-width="2"/><rect x="612" y="170" width="190" height="560" fill="none" stroke="#23242a" stroke-width="7"/><rect x="400" y="108" width="402" height="44" rx="0" fill="url(#glassGrad)"/><rect x="400" y="108" width="402" height="44" fill="none" stroke="#23242a" stroke-width="7"/><rect x="596" y="380" width="10" height="150" rx="5" fill="#ad8b52"/><rect x="610" y="380" width="10" height="150" rx="5" fill="#ad8b52"/>
+  <g font-family="'Sora','Inter',system-ui,sans-serif">
+    <rect x="70" y="806" width="46" height="7" rx="3.5" fill="#ad8b52"/>
+    <text x="70" y="858" font-size="30" font-weight="600" fill="#1d1e23">Frameless Glass Door - View 2</text>
+    <text x="1130" y="858" font-size="21" fill="rgba(29,30,35,0.55)" text-anchor="end">Karigor Decore - placeholder 08 / 48</text>
+  </g>
+</svg>
