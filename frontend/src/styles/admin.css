@@ -710,6 +710,34 @@
   gap: var(--space-3);
 }
 
+/* Grouped repeatable block (e.g. homepage hero slides) */
+
+.repeat-block {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin: 0 0 var(--space-5);
+  background: var(--color-bg-soft);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.repeat-block > legend {
+  padding-inline: var(--space-2);
+  font-weight: 600;
+}
+
+.repeat-block .form-field--full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .repeat-block {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Toggle switch */
 
 .switch {

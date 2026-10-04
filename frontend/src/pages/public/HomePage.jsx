@@ -9,17 +9,14 @@ import { ErrorState, LoadingBlock } from '../../components/common/States';
 import ProductCard from '../../components/public/ProductCard';
 import ProjectCard from '../../components/public/ProjectCard';
 import ServiceCard from '../../components/public/ServiceCard';
+import HeroSlider from '../../components/public/HeroSlider';
 import { useApi } from '../../hooks/useApi';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import { useSettings } from '../../context/SettingsContext';
 import { homepageApi } from '../../services/endpoints';
-import { imageSrc } from '../../utils/image';
 
 /** Icon rotation for the "why choose us" items (content is dashboard-managed). */
 const WHY_US_ICONS = ['award', 'tool', 'ruler', 'shield', 'tag', 'layers', 'heart', 'sparkle'];
-
-/** Maps hero button variants (from the dashboard) to dark-background buttons. */
-const HERO_VARIANTS = { primary: 'light', secondary: 'accent', ghost: 'ghost' };
 
 /**
  * Homepage - every word, image and link on this page is loaded from
@@ -66,38 +63,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ================= Hero ================= */}
-      <section className="hero">
-        <div className="hero__bg">
-          <img src={imageSrc(hero?.backgroundImage)} alt="" fetchpriority="high" />
-        </div>
-        <div className="hero__overlay" />
-        <div className="container">
-          <div className="hero__content">
-            {hero?.subheading ? <span className="hero__eyebrow">{hero.subheading}</span> : null}
-            <h1>{hero?.heading}</h1>
-            {hero?.description ? <p className="hero__description">{hero.description}</p> : null}
-            {hero?.buttons?.length > 0 && (
-              <div className="hero__actions">
-                {hero.buttons.map((button, index) => (
-                  <Button
-                    key={`${button.label}-${index}`}
-                    to={button.link}
-                    variant={HERO_VARIANTS[button.variant] || 'light'}
-                    size="lg"
-                  >
-                    {button.label}
-                  </Button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-        <a className="hero__scroll" href="#explore" aria-label="Scroll to content">
-          <span>Scroll</span>
-          <Icon name="chevron-down" size={18} />
-        </a>
-      </section>
+      {/* ================= Hero (slider when multiple slides are published) ================= */}
+      <HeroSlider hero={hero} />
 
       {/* ================= Trust strip ================= */}
       {trustItems.length > 0 && (

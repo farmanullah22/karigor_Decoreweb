@@ -10,6 +10,18 @@ const buttonSchema = new mongoose.Schema(
   { _id: false }
 );
 
+/** One entry in the homepage hero carousel. */
+const heroSlideSchema = new mongoose.Schema(
+  {
+    subheading: { type: String, default: '', trim: true, maxlength: 300 },
+    heading: { type: String, default: '', trim: true, maxlength: 200 },
+    description: { type: String, default: '', trim: true, maxlength: 800 },
+    backgroundImage: { type: imageSchema, default: null },
+    buttons: { type: [buttonSchema], default: [] },
+  },
+  { _id: false }
+);
+
 /**
  * Homepage - singleton document holding all editable homepage content:
  * hero, about teaser, section headings, why-choose-us items, CTA and SEO.
@@ -24,6 +36,12 @@ const homepageSchema = new mongoose.Schema(
       description: { type: String, default: '', trim: true, maxlength: 800 },
       backgroundImage: { type: imageSchema, default: null },
       buttons: { type: [buttonSchema], default: [] },
+      /**
+       * Optional carousel entries. When two or more slides are published the
+       * public hero renders as a crossfading slider; with zero or one it
+       * renders as the original single hero, so existing content is safe.
+       */
+      slides: { type: [heroSlideSchema], default: [] },
     },
     about: {
       heading: { type: String, default: '', trim: true, maxlength: 200 },

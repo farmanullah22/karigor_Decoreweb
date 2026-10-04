@@ -609,6 +609,45 @@ const homepage = {
       { label: 'View Our Projects', link: '/projects', variant: 'secondary' },
       { label: 'Contact Us', link: '/contact', variant: 'ghost' },
     ],
+    /**
+     * Carousel entries. Two or more slides turn the hero into a slider on the
+     * public homepage; editing these in the dashboard changes the slides.
+     */
+    slides: [
+      {
+        subheading: 'Karigor Decore',
+        heading: 'Modern Windows, Glass & Aluminum Solutions',
+        description:
+          'We design, fabricate and install customized windows, doors, glass partitions and interior decoration for homes, offices and commercial spaces. Buy our products - or bring us your project and we will build a solution around it.',
+        backgroundImage: { url: IMG('hero-architecture'), alt: 'Modern building facade with large glass windows' },
+        buttons: [
+          { label: 'Explore Products', link: '/products', variant: 'primary' },
+          { label: 'View Our Projects', link: '/projects', variant: 'secondary' },
+        ],
+      },
+      {
+        subheading: 'Ready-Made Products',
+        heading: 'Buy Direct From The Manufacturer',
+        description:
+          'Aluminum and UPVC windows, sliding and casement doors, frameless glass doors, toughened and frosted glass - cut, finished and ready to install. No middlemen, no guesswork on quality.',
+        backgroundImage: { url: IMG('project-showroom-facade'), alt: 'Showroom facade with large glazed panels' },
+        buttons: [
+          { label: 'Browse Products', link: '/products', variant: 'primary' },
+          { label: 'Request a Quote', link: '/quote', variant: 'secondary' },
+        ],
+      },
+      {
+        subheading: 'Bring Your Own Project',
+        heading: 'Fully Custom Fabrication & Installation',
+        description:
+          'Have drawings or an idea? Send us your measurements and we will fabricate, deliver and install a complete solution - windows, partitions, doors and finishing - handled end to end by our own team.',
+        backgroundImage: { url: IMG('about-workshop'), alt: 'Karigor Decore fabrication workshop' },
+        buttons: [
+          { label: 'Start Your Project', link: '/quote', variant: 'primary' },
+          { label: 'Our Services', link: '/services', variant: 'secondary' },
+        ],
+      },
+    ],
   },
   about: {
     heading: 'Precision Craftsmanship for Every Space',

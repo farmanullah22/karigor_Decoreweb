@@ -127,17 +127,86 @@ export default function HomepagePage() {
       },
     }));
 
+  // --- Hero slides (homepage slider) ---
+  const updateSlide = (index, key, value) =>
+    setForm((current) => ({
+      ...current,
+      hero: {
+        ...current.hero,
+        slides: (current.hero.slides || []).map((slide, i) =>
+          i === index ? { ...slide, [key]: value } : slide
+        ),
+      },
+    }));
+
+  const updateSlideButton = (slideIndex, buttonIndex, key, value) =>
+    setForm((current) => ({
+      ...current,
+      hero: {
+        ...current.hero,
+        slides: (current.hero.slides || []).map((slide, i) =>
+          i === slideIndex
+            ? {
+                ...slide,
+                buttons: (slide.buttons || []).map((button, j) =>
+                  j === buttonIndex ? { ...button, [key]: value } : button
+                ),
+              }
+            : slide
+        ),
+      },
+    }));
+
+  const addSlide = () =>
+    setForm((current) => ({
+      ...current,
+      hero: {
+        ...current.hero,
+        slides: [
+          ...(current.hero.slides || []),
+          { subheading: '', heading: '', description: '', backgroundImage: null, buttons: [] },
+        ],
+      },
+    }));
+
+  const removeSlide = (index) =>
+    setForm((current) => ({
+      ...current,
+      hero: {
+        ...current.hero,
+        slides: (current.hero.slides || []).filter((_, i) => i !== index),
+      },
+    }));
+
+  const moveSlide = (index, direction) =>
+    setForm((current) => {
+      const slides = [...(current.hero.slides || [])];
+      const target = index + direction;
+      if (target < 0 || target >= slides.length) return current;
+      [slides[index], slides[target]] = [slides[target], slides[index]];
+      return { ...current, hero: { ...current.hero, slides } };
+    });
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (saving || !form) return;
 
+    const cleanButtons = (buttons) =>
+      (buttons || []).filter((button) => button.label?.trim() && button.link?.trim());
+
     const payload = {
       hero: {
         ...form.hero,
-        buttons: (form.hero.buttons || []).filter(
-          (button) => button.label?.trim() && button.link?.trim()
-        ),
+        buttons: cleanButtons(form.hero.buttons),
         backgroundImage: form.hero.backgroundImage?.url ? form.hero.backgroundImage : null,
+        // Drop empty slides so a half-finished draft never shows a blank panel.
+        slides: (form.hero.slides || [])
+          .map((slide) => ({
+            ...slide,
+            buttons: cleanButtons(slide.buttons),
+            backgroundImage: slide.backgroundImage?.url ? slide.backgroundImage : null,
+          }))
+          .filter((slide) => slide.heading?.trim() || slide.backgroundImage?.url),
       },
       about: {
         ...form.about,
@@ -274,6 +343,181 @@ export default function HomepagePage() {
                 Add button
               </Button>
             </div>
+          </div>
+        </div>
+        <p className="form-hint" style={{ marginTop: 'var(--space-4)' }}>
+          The fields above are the fallback hero. Add two or more slides below and the
+          homepage hero becomes an automatic slider; the slide content is used instead.
+        </p>
+      </div>
+
+      {/* -------- Hero slides (slider) -------- */}
+      <div className="admin-form-section">
+        <h2 className="admin-form-section__title">
+          <Icon name="image" size={18} />
+          Hero Slider
+        </h2>
+        <div className="form-grid">
+          {(form.hero.slides || []).length === 0 ? (
+            <span className="form-hint">
+              No slides yet. The homepage shows a single hero until you add at least two.
+            </span>
+          ) : (
+            (form.hero.slides || []).map((slide, index) => (
+              <fieldset className="repeat-block form-field--full" key={index}>
+                <legend className="form-label">Slide {index + 1}</legend>
+
+                <div className="form-field form-field--full">
+                  <label className="form-label">Heading</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    maxLength={200}
+                    value={slide.heading || ''}
+                    onChange={(event) => updateSlide(index, 'heading', event.target.value)}
+                  />
+                </div>
+                <div className="form-field form-field--full">
+                  <label className="form-label">Subheading</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    maxLength={300}
+                    value={slide.subheading || ''}
+                    onChange={(event) => updateSlide(index, 'subheading', event.target.value)}
+                  />
+                </div>
+                <div className="form-field form-field--full">
+                  <label className="form-label">Description</label>
+                  <textarea
+                    className="form-textarea"
+                    rows={3}
+                    maxLength={800}
+                    value={slide.description || ''}
+                    onChange={(event) => updateSlide(index, 'description', event.target.value)}
+                  />
+                </div>
+
+                <ImagePicker
+                  label="Background image"
+                  value={slide.backgroundImage}
+                  onChange={(image) => updateSlide(index, 'backgroundImage', image)}
+                />
+
+                <div className="form-field form-field--full">
+                  <span className="form-label">Buttons</span>
+                  {(slide.buttons || []).length > 0 ? (
+                    <div className="repeat-list">
+                      {(slide.buttons || []).map((button, buttonIndex) => (
+                        <div className="repeat-row" key={buttonIndex}>
+                          <input
+                            className="form-input"
+                            type="text"
+                            placeholder="Label"
+                            value={button.label || ''}
+                            onChange={(event) =>
+                              updateSlideButton(index, buttonIndex, 'label', event.target.value)
+                            }
+                          />
+                          <input
+                            className="form-input"
+                            type="text"
+                            placeholder="Link (e.g. /products)"
+                            value={button.link || ''}
+                            onChange={(event) =>
+                              updateSlideButton(index, buttonIndex, 'link', event.target.value)
+                            }
+                          />
+                          <select
+                            className="form-select"
+                            style={{ maxWidth: 190 }}
+                            value={button.variant || 'primary'}
+                            onChange={(event) =>
+                              updateSlideButton(index, buttonIndex, 'variant', event.target.value)
+                            }
+                          >
+                            {BUTTON_VARIANTS.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </select>
+                          <button
+                            type="button"
+                            className="icon-btn icon-btn--danger"
+                            onClick={() =>
+                              updateSlide(
+                                index,
+                                'buttons',
+                                (slide.buttons || []).filter((_, i) => i !== buttonIndex)
+                              )
+                            }
+                            aria-label={`Remove button ${buttonIndex + 1}`}
+                          >
+                            <Icon name="trash" size={16} />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <span className="form-hint">No buttons on this slide.</span>
+                  )}
+                  <div style={{ marginTop: 'var(--space-3)' }}>
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      icon="plus"
+                      onClick={() =>
+                        updateSlide(index, 'buttons', [
+                          ...(slide.buttons || []),
+                          { label: '', link: '', variant: 'primary' },
+                        ])
+                      }
+                    >
+                      Add button
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="repeat-row" style={{ marginTop: 'var(--space-4)' }}>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="ghost"
+                    icon="arrow-up"
+                    onClick={() => moveSlide(index, -1)}
+                    disabled={index === 0}
+                  >
+                    Move up
+                  </Button>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="ghost"
+                    icon="chevron-down"
+                    onClick={() => moveSlide(index, 1)}
+                    disabled={index === (form.hero.slides || []).length - 1}
+                  >
+                    Move down
+                  </Button>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="ghost"
+                    icon="trash"
+                    onClick={() => removeSlide(index)}
+                  >
+                    Remove slide
+                  </Button>
+                </div>
+              </fieldset>
+            ))
+          )}
+          <div className="form-field form-field--full">
+            <Button type="button" size="sm" variant="secondary" icon="plus" onClick={addSlide}>
+              Add slide
+            </Button>
           </div>
         </div>
       </div>
