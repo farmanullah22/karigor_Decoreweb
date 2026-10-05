@@ -231,6 +231,10 @@
 }
 
 .card__media {
+  /* Must be block: this is an <a>, and an inline box ignores aspect-ratio,
+     which let each photo dictate its own height (portrait shots rendered
+     ~500px tall and unloaded ones collapsed to 0). */
+  display: block;
   position: relative;
   aspect-ratio: 4 / 3;
   overflow: hidden;
