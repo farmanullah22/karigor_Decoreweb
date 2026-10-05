@@ -21,11 +21,13 @@ router.put(
   [
     body('hero').optional().isObject(),
     body('hero.slides').optional().isArray({ max: MAX_HERO_SLIDES }),
-    body('hero.slides.*.heading').optional().isString().trim().isLength({ max: 200 }),
-    body('hero.slides.*.subheading').optional().isString().trim().isLength({ max: 300 }),
-    body('hero.slides.*.description').optional().isString().trim().isLength({ max: 800 }),
-    body('hero.slides.*.backgroundImage').optional().isObject(),
-    body('hero.slides.*.buttons').optional().isArray(),
+    // `nullable` because the dashboard sends explicit nulls for cleared
+    // images and empty text fields.
+    body('hero.slides.*.heading').optional({ nullable: true }).isString().trim().isLength({ max: 200 }),
+    body('hero.slides.*.subheading').optional({ nullable: true }).isString().trim().isLength({ max: 300 }),
+    body('hero.slides.*.description').optional({ nullable: true }).isString().trim().isLength({ max: 800 }),
+    body('hero.slides.*.backgroundImage').optional({ nullable: true }).isObject(),
+    body('hero.slides.*.buttons').optional({ nullable: true }).isArray(),
     body('about').optional().isObject(),
     body('sections').optional().isObject(),
     body('cta').optional().isObject(),

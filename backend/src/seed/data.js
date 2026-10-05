@@ -610,6 +610,55 @@ const homepage = {
       { label: 'View Our Projects', link: '/projects', variant: 'secondary' },
       { label: 'Contact Us', link: '/contact', variant: 'ghost' },
     ],
+    // Rotating hero. The first slide mirrors the single-hero fields above;
+    // the controller keeps both in sync when the dashboard is saved.
+    slides: [
+      {
+        heading: 'Modern Windows, Glass & Aluminum Solutions',
+        subheading: 'Decora',
+        description:
+          'We design, fabricate and install customized windows, doors, glass partitions and interior decoration for homes, offices and commercial spaces. Buy our products - or bring us your project and we will build a solution around it.',
+        backgroundImage: { url: IMG('hero-architecture'), alt: 'Modern building facade with large glass windows' },
+        buttons: [
+          { label: 'Explore Products', link: '/products', variant: 'primary' },
+          { label: 'View Our Projects', link: '/projects', variant: 'secondary' },
+          { label: 'Contact Us', link: '/contact', variant: 'ghost' },
+        ],
+      },
+      {
+        heading: 'Ready-Made Products, Built To Measure',
+        subheading: 'Buy Or Customize',
+        description:
+          'Pick a finished product from our catalog, or bring us your own project - drawings, measurements, ideas - and we will design, fabricate and install the whole solution.',
+        backgroundImage: { url: IMG('product-aluminum-sliding-window'), alt: 'Aluminum sliding window installed in a residential building' },
+        buttons: [
+          { label: 'Browse Products', link: '/products', variant: 'primary' },
+          { label: 'Request a Quote', link: '/quote', variant: 'secondary' },
+        ],
+      },
+      {
+        heading: 'Fabricated In Our Own Workshop',
+        subheading: 'Quality You Can Measure',
+        description:
+          'From the first site measurement to the final handover, our own fabrication and installation teams control quality at every step - no outsourcing, no surprises.',
+        backgroundImage: { url: IMG('about-workshop'), alt: 'Decora fabrication workshop' },
+        buttons: [
+          { label: 'Our Services', link: '/services', variant: 'primary' },
+          { label: 'About Decora', link: '/about', variant: 'ghost' },
+        ],
+      },
+      {
+        heading: 'Spaces We Have Transformed',
+        subheading: 'Completed Projects',
+        description:
+          'Residential, office and commercial work - aluminum windows, frameless glass doors, partitions, railings and full interior decoration packages.',
+        backgroundImage: { url: IMG('project-office-partition'), alt: 'Glass office partition installed in a corporate office' },
+        buttons: [
+          { label: 'See Our Projects', link: '/projects', variant: 'primary' },
+          { label: 'Contact Us', link: '/contact', variant: 'ghost' },
+        ],
+      },
+    ],
   },
   about: {
     heading: 'Precision Craftsmanship for Every Space',

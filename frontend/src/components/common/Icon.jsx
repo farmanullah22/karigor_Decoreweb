@@ -11,8 +11,11 @@ const PATHS = {
   close: <path d="M18 6 6 18M6 6l12 12" />,
   'arrow-right': <path d="M5 12h14m-6-6 6 6-6 6" />,
   'arrow-left': <path d="M19 12H5m6 6-6-6 6-6" />,
+  'arrow-up': <path d="M12 19V5m-6 6 6-6 6 6" />,
+  'arrow-down': <path d="M12 5v14m6-6-6 6-6-6" />,
   'arrow-up-right': <path d="M7 17 17 7M8 7h9v9" />,
   'chevron-down': <path d="m6 9 6 6 6-6" />,
+  'chevron-up': <path d="m6 15 6-6 6 6" />,
   'chevron-left': <path d="m15 6-6 6 6 6" />,
   'chevron-right': <path d="m9 6 6 6-6 6" />,
   search: (

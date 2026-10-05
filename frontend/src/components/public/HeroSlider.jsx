@@ -109,7 +109,10 @@ export default function HeroSlider({ slides = [], scrollHintVisible = true }) {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="hero__track">
+      <div
+        className="hero__track"
+        style={isSlider ? { transform: `translate3d(-${index * 100}%, 0, 0)` } : undefined}
+      >
         {slides.map((slide, slideIndex) => {
           const isActive = slideIndex === index;
 
@@ -127,9 +130,14 @@ export default function HeroSlider({ slides = [], scrollHintVisible = true }) {
                   src={imageSrc(slide.backgroundImage)}
                   alt=""
                   aria-hidden="true"
-                  loading={slideIndex === 0 ? 'eager' : 'lazy'}
+                  /* Every slide must be painted the moment it is shown. Slides
+                     are parked off-screen by a transform on the track, and
+                     browsers do not reliably re-run lazy loading for elements
+                     moved by an ancestor transform - they stayed at
+                     naturalWidth 0 and rendered as a blank slide. */
+                  loading="eager"
                   decoding="async"
-                  fetchpriority={slideIndex === 0 ? 'high' : 'auto'}
+                  fetchPriority={slideIndex === 0 ? 'high' : 'low'}
                 />
               </div>
               <div className="hero__overlay" />

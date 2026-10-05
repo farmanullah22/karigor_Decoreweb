@@ -6,6 +6,7 @@ import LazyImage from '../../components/common/LazyImage';
 import Reveal from '../../components/common/Reveal';
 import SectionHeading from '../../components/common/SectionHeading';
 import { ErrorState, LoadingBlock } from '../../components/common/States';
+import HeroSlider from '../../components/public/HeroSlider';
 import ProductCard from '../../components/public/ProductCard';
 import ProjectCard from '../../components/public/ProjectCard';
 import ServiceCard from '../../components/public/ServiceCard';
@@ -13,13 +14,33 @@ import { useApi } from '../../hooks/useApi';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import { useSettings } from '../../context/SettingsContext';
 import { homepageApi } from '../../services/endpoints';
-import { imageSrc } from '../../utils/image';
 
 /** Icon rotation for the "why choose us" items (content is dashboard-managed). */
 const WHY_US_ICONS = ['award', 'tool', 'ruler', 'shield', 'tag', 'layers', 'heart', 'sparkle'];
 
-/** Maps hero button variants (from the dashboard) to dark-background buttons. */
-const HERO_VARIANTS = { primary: 'light', secondary: 'accent', ghost: 'ghost' };
+/**
+ * The hero is a slider. Older records only have the single-hero fields, so
+ * fall back to building one slide from them - that keeps rendering working
+ * before anything is migrated in the dashboard.
+ */
+function toHeroSlides(hero) {
+  if (!hero) return [];
+
+  const slides = (hero.slides || []).filter(
+    (slide) => slide && (slide.backgroundImage || slide.heading || slide.subheading || slide.description)
+  );
+  if (slides.length > 0) return slides;
+
+  return [
+    {
+      heading: hero.heading,
+      subheading: hero.subheading,
+      description: hero.description,
+      backgroundImage: hero.backgroundImage,
+      buttons: hero.buttons || [],
+    },
+  ];
+}
 
 /**
  * Homepage - every word, image and link on this page is loaded from
@@ -53,6 +74,7 @@ export default function HomePage() {
   }
 
   const { hero, about, sections, cta } = homepage;
+  const heroSlides = toHeroSlides(hero);
   const trustItems = [
     settings.phone ? { icon: 'phone', text: settings.phone } : null,
     settings.email ? { icon: 'mail', text: settings.email } : null,
@@ -66,38 +88,8 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ================= Hero ================= */}
-      <section className="hero">
-        <div className="hero__bg">
-          <img src={imageSrc(hero?.backgroundImage)} alt="" fetchpriority="high" />
-        </div>
-        <div className="hero__overlay" />
-        <div className="container">
-          <div className="hero__content">
-            {hero?.subheading ? <span className="hero__eyebrow">{hero.subheading}</span> : null}
-            <h1>{hero?.heading}</h1>
-            {hero?.description ? <p className="hero__description">{hero.description}</p> : null}
-            {hero?.buttons?.length > 0 && (
-              <div className="hero__actions">
-                {hero.buttons.map((button, index) => (
-                  <Button
-                    key={`${button.label}-${index}`}
-                    to={button.link}
-                    variant={HERO_VARIANTS[button.variant] || 'light'}
-                    size="lg"
-                  >
-                    {button.label}
-                  </Button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-        <a className="hero__scroll" href="#explore" aria-label="Scroll to content">
-          <span>Scroll</span>
-          <Icon name="chevron-down" size={18} />
-        </a>
-      </section>
+      {/* ================= Hero slider ================= */}
+      <HeroSlider slides={heroSlides} />
 
       {/* ================= Trust strip ================= */}
       {trustItems.length > 0 && (

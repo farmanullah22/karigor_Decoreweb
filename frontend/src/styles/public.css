@@ -254,22 +254,29 @@
 .hero__bg {
   position: absolute;
   inset: 0;
+  overflow: hidden;
 }
 
 /* Single-slide hero keeps the original slow zoom. In slider mode the
-   animation is applied only to the active slide (see below) so it
-   restarts every time a slide comes back into view. */
+animation is applied only to the active slide (see below) so it
+restarts every time a slide comes back into view. */
 .hero:not(.hero--slider) .hero__bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   animation: hero-zoom 14s var(--ease-out) both;
-}
+  }
 
+/* The photo is pinned to the exact hero box, so it is always full-bleed at
+   100% width and height no matter its own aspect ratio. `cover` crops rather
+   than letterboxes, and the global img reset's max-width is lifted so it can
+   never be capped below the hero width. */
 .hero__bg img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 @keyframes hero-zoom {
@@ -384,14 +391,19 @@
   outline-offset: -2px;
 }
 
-/* Track holds every slide side by side; the active one is translated
-   into view. Slides are stacked with the track, not scrolled, so the
-   hero keeps a single fixed height. */
+/* Track holds every slide side by side and is translated so the active slide
+   sits in view (see HeroSlider.jsx). Slides are stacked with the track, not
+   scrolled, so the hero keeps a single fixed height. */
 .hero__track {
   position: absolute;
   inset: 0;
   display: flex;
   overflow: hidden;
+  will-change: transform;
+}
+
+.hero--slider .hero__track {
+  transition: transform 720ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero__slide {
@@ -403,10 +415,9 @@
   min-width: 0;
 }
 
-/* Off-screen slides stay in the DOM but are not painted or focusable. */
-.hero__slide:not(.is-active) {
-  visibility: hidden;
-}
+/* Non-active slides stay painted (the track clips them) so the transition
+   actually shows the outgoing and incoming slides. Assistive tech and the
+   tab order are handled by aria-hidden and tabIndex={-1} in the component. */
 
 .hero__slide .hero__bg img {
   transform: scale(1.08);
@@ -497,6 +508,13 @@
   outline-offset: 3px;
 }
 
+/* The scroll cue sits centre-bottom, where the dots now live. */
+.hero--slider .hero__scroll {
+  left: auto;
+  right: var(--space-6);
+  transform: none;
+}
+
 @media (max-width: 768px) {
   .hero__arrow {
     width: 38px;
@@ -516,6 +534,17 @@
   }
   .hero__dot.is-active {
     width: 34px;
+  }
+}
+
+/* Visitors who ask for less motion get instant slide changes. */
+@media (prefers-reduced-motion: reduce) {
+  .hero--slider .hero__track {
+    transition: none;
+  }
+  .hero__slide.is-active .hero__bg img {
+    animation: none;
+    transform: none;
   }
 }
 

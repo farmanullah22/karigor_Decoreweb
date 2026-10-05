@@ -649,6 +649,22 @@
   padding: var(--space-8);
 }
 
+/* A card nested inside another card (e.g. one hero slide inside the
+   homepage form) - lighter border, tinted background so the levels
+   stay readable. */
+.admin-form-card--nested {
+  border-style: dashed;
+  background: var(--color-bg-soft);
+  padding: var(--space-6);
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .admin-form-card--nested {
+    padding: var(--space-4);
+  }
+}
+
 .admin-form-section {
   padding-bottom: var(--space-8);
   margin-bottom: var(--space-8);

@@ -18,6 +18,49 @@ const BUTTON_VARIANTS = [
   { value: 'ghost', label: 'Ghost (transparent)' },
 ];
 
+/** Mirrors the backend limit in backend/src/models/Homepage.js. */
+const MAX_HERO_SLIDES = 8;
+
+/** A slide is worth keeping if it has an image or any text. */
+function hasSlideContent(slide) {
+  return Boolean(
+    slide &&
+      (slide.backgroundImage?.url ||
+        String(slide.heading || '').trim() ||
+        String(slide.subheading || '').trim() ||
+        String(slide.description || '').trim())
+  );
+}
+
+/**
+ * Records created before the hero slider existed only have the single-hero
+ * fields. Turn those into a single slide so the editor always shows slides
+ * and saving migrates the document without losing anything.
+ */
+function withHeroSlides(homepage) {
+  const hero = homepage.hero || {};
+  const existing = (hero.slides || []).filter(hasSlideContent);
+
+  return {
+    ...homepage,
+    hero: {
+      ...hero,
+      slides:
+        existing.length > 0
+          ? existing
+          : [
+              {
+                heading: hero.heading || '',
+                subheading: hero.subheading || '',
+                description: hero.description || '',
+                backgroundImage: hero.backgroundImage || null,
+                buttons: hero.buttons || [],
+              },
+            ],
+    },
+  };
+}
+
 /** Reusable heading + subheading + enabled switch block for a section. */
 function SectionFields({ title, section, onField, onToggle, children }) {
   return (
@@ -73,11 +116,8 @@ export default function HomepagePage() {
   const { data: homepage, loading, error, reload } = useApi(() => homepageApi.getForAdmin(), []);
 
   useEffect(() => {
-    if (homepage) setForm(homepage);
+    if (homepage) setForm(withHeroSlides(homepage));
   }, [homepage]);
-
-  const updateHero = (key, value) =>
-    setForm((current) => ({ ...current, hero: { ...current.hero, [key]: value } }));
 
   const updateAbout = (key, value) =>
     setForm((current) => ({ ...current, about: { ...current.about, [key]: value } }));
@@ -97,47 +137,120 @@ export default function HomepagePage() {
   const updateSeo = (key, value) =>
     setForm((current) => ({ ...current, seo: { ...current.seo, [key]: value } }));
 
-  // --- Hero buttons ---
-  const updateHeroButton = (index, key, value) =>
+  // --- Hero slides ---
+
+  /** Patches one field of one slide. */
+  const updateSlide = (index, key, value) =>
     setForm((current) => ({
       ...current,
       hero: {
         ...current.hero,
-        buttons: current.hero.buttons.map((button, i) =>
-          i === index ? { ...button, [key]: value } : button
+        slides: current.hero.slides.map((slide, i) =>
+          i === index ? { ...slide, [key]: value } : slide
         ),
       },
     }));
 
-  const addHeroButton = () =>
+  /** Patches one button of one slide. */
+  const updateSlideButton = (slideIndex, buttonIndex, key, value) =>
     setForm((current) => ({
       ...current,
       hero: {
         ...current.hero,
-        buttons: [...(current.hero.buttons || []), { label: '', link: '', variant: 'primary' }],
+        slides: current.hero.slides.map((slide, i) =>
+          i === slideIndex
+            ? {
+                ...slide,
+                buttons: (slide.buttons || []).map((button, b) =>
+                  b === buttonIndex ? { ...button, [key]: value } : button
+                ),
+              }
+            : slide
+        ),
       },
     }));
 
-  const removeHeroButton = (index) =>
+  const addSlideButton = (slideIndex) =>
     setForm((current) => ({
       ...current,
       hero: {
         ...current.hero,
-        buttons: current.hero.buttons.filter((_, i) => i !== index),
+        slides: current.hero.slides.map((slide, i) =>
+          i === slideIndex
+            ? { ...slide, buttons: [...(slide.buttons || []), { label: '', link: '', variant: 'primary' }] }
+            : slide
+        ),
       },
     }));
+
+  const removeSlideButton = (slideIndex, buttonIndex) =>
+    setForm((current) => ({
+      ...current,
+      hero: {
+        ...current.hero,
+        slides: current.hero.slides.map((slide, i) =>
+          i === slideIndex
+            ? { ...slide, buttons: (slide.buttons || []).filter((_, b) => b !== buttonIndex) }
+            : slide
+        ),
+      },
+    }));
+
+  const addSlide = () =>
+    setForm((current) => ({
+      ...current,
+      hero: {
+        ...current.hero,
+        slides: [
+          ...(current.hero.slides || []),
+          { heading: '', subheading: '', description: '', backgroundImage: null, buttons: [] },
+        ].slice(0, MAX_HERO_SLIDES),
+      },
+    }));
+
+  const removeSlide = (index) =>
+    setForm((current) => ({
+      ...current,
+      hero: {
+        ...current.hero,
+        slides: (current.hero.slides || []).filter((_, i) => i !== index),
+      },
+    }));
+
+  /** Moves a slide one position up (-1) or down (+1). */
+  const moveSlide = (index, offset) =>
+    setForm((current) => {
+      const slides = [...(current.hero.slides || [])];
+      const target = index + offset;
+      if (target < 0 || target >= slides.length) return current;
+      const [moved] = slides.splice(index, 1);
+      slides.splice(target, 0, moved);
+      return { ...current, hero: { ...current.hero, slides } };
+    });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (saving || !form) return;
 
+    // Empty slides and half-filled buttons are dropped before saving.
+    const slides = (form.hero.slides || [])
+      .map((slide) => ({
+        heading: slide.heading || '',
+        subheading: slide.subheading || '',
+        description: slide.description || '',
+        backgroundImage: slide.backgroundImage?.url ? slide.backgroundImage : null,
+        buttons: (slide.buttons || []).filter((button) => button.label?.trim() && button.link?.trim()),
+      }))
+      .filter(
+        (slide) =>
+          slide.backgroundImage || slide.heading.trim() || slide.subheading.trim() || slide.description.trim()
+      );
+
     const payload = {
       hero: {
         ...form.hero,
-        buttons: (form.hero.buttons || []).filter(
-          (button) => button.label?.trim() && button.link?.trim()
-        ),
-        backgroundImage: form.hero.backgroundImage?.url ? form.hero.backgroundImage : null,
+        slides,
+        backgroundImage: slides[0]?.backgroundImage || null,
       },
       about: {
         ...form.about,
@@ -175,106 +288,191 @@ export default function HomepagePage() {
 
   return (
     <form className="admin-form-card" onSubmit={handleSubmit}>
-      {/* -------- Hero -------- */}
+      {/* -------- Hero slider -------- */}
       <div className="admin-form-section">
         <h2 className="admin-form-section__title">
           <Icon name="sparkle" size={18} />
-          Hero Section
+          Hero Slider
         </h2>
-        <div className="form-grid">
-          <div className="form-field form-field--full">
-            <label className="form-label">Heading</label>
-            <input
-              className="form-input"
-              type="text"
-              maxLength={200}
-              placeholder="The big line visitors read first."
-              value={form.hero.heading || ''}
-              onChange={(event) => updateHero('heading', event.target.value)}
-            />
-          </div>
-          <div className="form-field form-field--full">
-            <label className="form-label">Subheading</label>
-            <input
-              className="form-input"
-              type="text"
-              maxLength={300}
-              placeholder="Short supporting line."
-              value={form.hero.subheading || ''}
-              onChange={(event) => updateHero('subheading', event.target.value)}
-            />
-          </div>
-          <div className="form-field form-field--full">
-            <label className="form-label">Description</label>
-            <textarea
-              className="form-textarea"
-              rows={3}
-              maxLength={800}
-              placeholder="A sentence or two about what you do."
-              value={form.hero.description || ''}
-              onChange={(event) => updateHero('description', event.target.value)}
-            />
-          </div>
+        <p className="form-hint" style={{ marginBottom: 'var(--space-4)' }}>
+          Up to {MAX_HERO_SLIDES} slides, shown one at a time on the homepage and rotating
+          automatically. Slide 1 is what visitors see first. With a single slide the hero shows
+          no arrows or dots - just a normal banner.
+        </p>
 
-          <ImagePicker
-            label="Background image"
-            value={form.hero.backgroundImage}
-            onChange={(image) => updateHero('backgroundImage', image)}
-            hint="A wide, high-quality photo works best. Text stays readable over a dark overlay."
-          />
-
-          <div className="form-field form-field--full">
-            <span className="form-label">Hero buttons</span>
-            {(form.hero.buttons || []).length > 0 ? (
-              <div className="repeat-list">
-                {(form.hero.buttons || []).map((button, index) => (
-                  <div className="repeat-row" key={index}>
-                    <input
-                      className="form-input"
-                      type="text"
-                      placeholder="Label (e.g. Request a Quote)"
-                      value={button.label || ''}
-                      onChange={(event) => updateHeroButton(index, 'label', event.target.value)}
-                    />
-                    <input
-                      className="form-input"
-                      type="text"
-                      placeholder="Link (e.g. /quote)"
-                      value={button.link || ''}
-                      onChange={(event) => updateHeroButton(index, 'link', event.target.value)}
-                    />
-                    <select
-                      className="form-select"
-                      style={{ maxWidth: 190 }}
-                      value={button.variant || 'primary'}
-                      onChange={(event) => updateHeroButton(index, 'variant', event.target.value)}
-                    >
-                      {BUTTON_VARIANTS.map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                    <button
-                      type="button"
-                      className="icon-btn icon-btn--danger"
-                      onClick={() => removeHeroButton(index)}
-                      aria-label="Remove button"
-                    >
-                      <Icon name="trash" size={16} />
-                    </button>
-                  </div>
-                ))}
+        <div className="repeat-list">
+          {(form.hero.slides || []).map((slide, slideIndex) => (
+            <div className="admin-form-card admin-form-card--nested" key={slide._id || `slide-${slideIndex}`}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 'var(--space-3)',
+                  marginBottom: 'var(--space-4)',
+                }}
+              >
+                <strong style={{ fontSize: 'var(--text-sm)' }}>
+                  Slide {slideIndex + 1}
+                  {slideIndex === 0 ? ' (first)' : ''}
+                </strong>
+                <div style={{ display: 'flex', gap: 6 }}>
+                  <button
+                    type="button"
+                    className="icon-btn"
+                    onClick={() => moveSlide(slideIndex, -1)}
+                    disabled={slideIndex === 0}
+                    aria-label={`Move slide ${slideIndex + 1} up`}
+                  >
+                    <Icon name="arrow-up" size={16} />
+                  </button>
+                  <button
+                    type="button"
+                    className="icon-btn"
+                    onClick={() => moveSlide(slideIndex, 1)}
+                    disabled={slideIndex === (form.hero.slides || []).length - 1}
+                    aria-label={`Move slide ${slideIndex + 1} down`}
+                  >
+                    <Icon name="arrow-down" size={16} />
+                  </button>
+                  <button
+                    type="button"
+                    className="icon-btn icon-btn--danger"
+                    onClick={() => removeSlide(slideIndex)}
+                    aria-label={`Remove slide ${slideIndex + 1}`}
+                  >
+                    <Icon name="trash" size={16} />
+                  </button>
+                </div>
               </div>
-            ) : (
-              <span className="form-hint">No buttons yet.</span>
-            )}
-            <div style={{ marginTop: 'var(--space-3)' }}>
-              <Button type="button" size="sm" variant="ghost" icon="plus" onClick={addHeroButton}>
-                Add button
-              </Button>
+
+              <div className="form-grid">
+                <ImagePicker
+                  label="Background image"
+                  value={slide.backgroundImage}
+                  onChange={(image) => updateSlide(slideIndex, 'backgroundImage', image)}
+                  hint="A wide, high-quality photo works best - landscape, 1600px or wider. Text stays readable over the dark overlay."
+                />
+
+                <div className="form-field form-field--full">
+                  <label className="form-label">Heading</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    maxLength={200}
+                    placeholder="The big line visitors read first."
+                    value={slide.heading || ''}
+                    onChange={(event) => updateSlide(slideIndex, 'heading', event.target.value)}
+                  />
+                </div>
+                <div className="form-field form-field--full">
+                  <label className="form-label">Subheading</label>
+                  <input
+                    className="form-input"
+                    type="text"
+                    maxLength={300}
+                    placeholder="Short supporting line above the heading."
+                    value={slide.subheading || ''}
+                    onChange={(event) => updateSlide(slideIndex, 'subheading', event.target.value)}
+                  />
+                </div>
+                <div className="form-field form-field--full">
+                  <label className="form-label">Description</label>
+                  <textarea
+                    className="form-textarea"
+                    rows={3}
+                    maxLength={800}
+                    placeholder="A sentence or two about what you do."
+                    value={slide.description || ''}
+                    onChange={(event) => updateSlide(slideIndex, 'description', event.target.value)}
+                  />
+                </div>
+
+                <div className="form-field form-field--full">
+                  <span className="form-label">Buttons</span>
+                  {(slide.buttons || []).length > 0 ? (
+                    <div className="repeat-list">
+                      {(slide.buttons || []).map((button, buttonIndex) => (
+                        <div className="repeat-row" key={buttonIndex}>
+                          <input
+                            className="form-input"
+                            type="text"
+                            placeholder="Label (e.g. Request a Quote)"
+                            value={button.label || ''}
+                            onChange={(event) =>
+                              updateSlideButton(slideIndex, buttonIndex, 'label', event.target.value)
+                            }
+                          />
+                          <input
+                            className="form-input"
+                            type="text"
+                            placeholder="Link (e.g. /quote)"
+                            value={button.link || ''}
+                            onChange={(event) =>
+                              updateSlideButton(slideIndex, buttonIndex, 'link', event.target.value)
+                            }
+                          />
+                          <select
+                            className="form-select"
+                            style={{ maxWidth: 190 }}
+                            value={button.variant || 'primary'}
+                            onChange={(event) =>
+                              updateSlideButton(slideIndex, buttonIndex, 'variant', event.target.value)
+                            }
+                          >
+                            {BUTTON_VARIANTS.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </select>
+                          <button
+                            type="button"
+                            className="icon-btn icon-btn--danger"
+                            onClick={() => removeSlideButton(slideIndex, buttonIndex)}
+                            aria-label="Remove button"
+                          >
+                            <Icon name="trash" size={16} />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <span className="form-hint">No buttons on this slide.</span>
+                  )}
+                  <div style={{ marginTop: 'var(--space-3)' }}>
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="ghost"
+                      icon="plus"
+                      onClick={() => addSlideButton(slideIndex)}
+                    >
+                      Add button
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: 'var(--space-4)' }}>
+          <Button
+            type="button"
+            size="sm"
+            variant="secondary"
+            icon="plus"
+            onClick={addSlide}
+            disabled={(form.hero.slides || []).length >= MAX_HERO_SLIDES}
+          >
+            Add slide
+          </Button>
+          {(form.hero.slides || []).length >= MAX_HERO_SLIDES ? (
+            <span className="form-hint" style={{ marginLeft: 'var(--space-3)' }}>
+              Maximum of {MAX_HERO_SLIDES} slides reached.
+            </span>
+          ) : null}
         </div>
       </div>
 
