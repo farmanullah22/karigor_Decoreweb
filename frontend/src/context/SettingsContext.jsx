@@ -10,7 +10,7 @@ const SettingsContext = createContext(null);
  */
 
 const FALLBACK_SETTINGS = {
-  companyName: 'Karigor Decore',
+  companyName: 'Decora',
   tagline: '',
   footerDescription: '',
   logo: '',

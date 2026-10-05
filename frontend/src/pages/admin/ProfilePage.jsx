@@ -147,7 +147,7 @@ export default function ProfilePage() {
                 className="form-input"
                 type="tel"
                 maxLength={30}
-                placeholder="+880 1XXX-XXXXXX"
+                placeholder="+92 3XX XXXXXXX"
                 value={form.phone}
                 onChange={(event) => update('phone', event.target.value)}
               />

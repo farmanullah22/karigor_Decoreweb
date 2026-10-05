@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
  */
 const companySettingsSchema = new mongoose.Schema(
   {
-    companyName: { type: String, default: 'Karigor Decore', trim: true },
+    companyName: { type: String, default: 'Decora', trim: true },
     tagline: { type: String, default: '', trim: true, maxlength: 200 },
     footerDescription: { type: String, default: '', trim: true, maxlength: 500 },
     logo: { type: String, default: '', trim: true },

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Residential Windows - View 2 - Karigor Decore placeholder image">
-  <title>Residential Windows - View 2 - Karigor Decore placeholder</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="Residential Windows - View 2 - Decora placeholder image">
+  <title>Residential Windows - View 2 - Decora placeholder</title>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#fbfaf7"/>
@@ -20,6 +20,6 @@
   <g font-family="'Sora','Inter',system-ui,sans-serif">
     <rect x="70" y="806" width="46" height="7" rx="3.5" fill="#ad8b52"/>
     <text x="70" y="858" font-size="30" font-weight="600" fill="#1d1e23">Residential Windows - View 2</text>
-    <text x="1130" y="858" font-size="21" fill="rgba(29,30,35,0.55)" text-anchor="end">Karigor Decore - placeholder 32 / 48</text>
+    <text x="1130" y="858" font-size="21" fill="rgba(29,30,35,0.55)" text-anchor="end">Decora - placeholder 32 / 48</text>
   </g>
 </svg>

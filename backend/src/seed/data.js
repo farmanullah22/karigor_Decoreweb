@@ -1,5 +1,5 @@
 /**
- * Development seed content for Karigor Decore.
+ * Development seed content for Decora.
  * All images reference placeholder SVGs shipped with the frontend
  * (frontend/public/seed-images) - replace them from the dashboard.
  */
@@ -463,7 +463,7 @@ const projects = [
   {
     name: 'Modern Residential Window Upgrade',
     category: 'Residential',
-    location: 'Banani, Dhaka',
+    location: 'Gulberg, Peshawar',
     completionDate: '2025-11-20',
     shortDescription: 'Full building window replacement with slim-profile aluminum sliding windows.',
     description:
@@ -478,7 +478,7 @@ const projects = [
   {
     name: 'Corporate Office Glass Partition',
     category: 'Office',
-    location: 'Gulshan Avenue, Dhaka',
+    location: 'University Town, Peshawar',
     completionDate: '2026-01-15',
     shortDescription: 'Double-glazed office partitions with integrated blinds for a corporate HQ.',
     description:
@@ -493,7 +493,7 @@ const projects = [
   {
     name: 'Aluminum Door Installation Project',
     category: 'Doors',
-    location: 'Bashundhara R/A, Dhaka',
+    location: 'Bahria Town, Peshawar',
     completionDate: '2025-09-05',
     shortDescription: '42 custom aluminum doors fabricated and installed across a duplex project.',
     description:
@@ -508,7 +508,7 @@ const projects = [
   {
     name: 'Luxury Home Floor-to-Ceiling Windows',
     category: 'Residential',
-    location: 'Baridhara, Dhaka',
+    location: 'Saddar, Peshawar',
     completionDate: '2025-12-10',
     shortDescription: 'Double-height floor-to-ceiling glazing for a private residence.',
     description:
@@ -523,7 +523,7 @@ const projects = [
   {
     name: 'Commercial Showroom Glass Facade',
     category: 'Commercial',
-    location: 'Uttara Sector 7, Dhaka',
+    location: 'Hayatabad, Peshawar',
     completionDate: '2025-08-18',
     shortDescription: 'Full-height showroom facade with frameless glass and ACP cladding.',
     description:
@@ -538,7 +538,7 @@ const projects = [
   {
     name: 'Apartment Building Aluminum Windows',
     category: 'Aluminum',
-    location: 'Dhanmondi, Dhaka',
+    location: 'Warsak Road, Peshawar',
     completionDate: '2025-06-25',
     shortDescription: 'Batch fabrication of 120 aluminum windows for a 10-storey building.',
     description:
@@ -568,17 +568,18 @@ const projects = [
 ];
 
 const companySettings = {
-  companyName: 'Karigor Decore',
+  companyName: 'Decora',
   tagline: 'Modern Windows, Glass & Aluminum Solutions',
   footerDescription:
-    'Karigor Decore manufactures and installs premium aluminum windows, doors, glass solutions and interior decoration for homes, offices and commercial spaces. From a single window to a complete building - we design, fabricate and install.',
+    'Decora manufactures and installs premium aluminum windows, doors, glass solutions and interior decoration for homes, offices and commercial spaces. From a single window to a complete building - we design, fabricate and install.',
   logo: '',
   favicon: '',
-  phone: '+880 1766-554433',
-  whatsapp: '+8801766554433',
+  phone: '+92 321 9175485',
+  whatsapp: '+923219175485',
   email: 'info@karigordecore.com',
-  address: 'House 42, Road 11, Banani, Dhaka 1213, Bangladesh',
-  googleMapsUrl: 'https://maps.google.com/?q=Banani,Dhaka,Bangladesh',
+  address: 'Hascol Pump, Peshawar Ring Rd., near Sarhad University, Garhi Sikandar Khan, Peshawar, 25000, Pakistan',
+  googleMapsUrl:
+    'https://maps.google.com/?q=Hascol+Pump,+Peshawar+Ring+Rd,+near+Sarhad+University,+Garhi+Sikandar+Khan,+Peshawar,+Pakistan',
   businessHours: [
     { days: 'Saturday - Thursday', hours: '9:00 AM - 8:00 PM' },
     { days: 'Friday', hours: '2:30 PM - 8:00 PM' },
@@ -591,16 +592,16 @@ const companySettings = {
     linkedin: '',
   },
   defaultMeta: {
-    title: 'Karigor Decore | Modern Windows, Glass & Aluminum Solutions',
+    title: 'Decora | Modern Windows, Glass & Aluminum Solutions',
     description:
-      'Karigor Decore manufactures and installs aluminum windows, doors, glass partitions and interior decoration. Custom fabrication for residential, office and commercial projects.',
+      'Decora manufactures and installs aluminum windows, doors, glass partitions and interior decoration. Custom fabrication for residential, office and commercial projects.',
   },
 };
 
 const homepage = {
   hero: {
     heading: 'Modern Windows, Glass & Aluminum Solutions',
-    subheading: 'Karigor Decore',
+    subheading: 'Decora',
     description:
       'We design, fabricate and install customized windows, doors, glass partitions and interior decoration for homes, offices and commercial spaces. Buy our products - or bring us your project and we will build a solution around it.',
     backgroundImage: { url: IMG('hero-architecture'), alt: 'Modern building facade with large glass windows' },
@@ -613,8 +614,8 @@ const homepage = {
   about: {
     heading: 'Precision Craftsmanship for Every Space',
     description:
-      'Karigor Decore is a manufacturing and decoration company specializing in aluminum and glass solutions. With our own fabrication workshop and dedicated installation teams, we control quality at every step - from the first measurement to the final handover. Whether you need a single window or a complete commercial glazing package, you get the same attention to detail.',
-    image: { url: IMG('about-workshop'), alt: 'Karigor Decore fabrication workshop' },
+      'Decora is a manufacturing and decoration company specializing in aluminum and glass solutions. With our own fabrication workshop and dedicated installation teams, we control quality at every step - from the first measurement to the final handover. Whether you need a single window or a complete commercial glazing package, you get the same attention to detail.',
+    image: { url: IMG('about-workshop'), alt: 'Decora fabrication workshop' },
     ctaLabel: 'Learn More About Us',
     ctaLink: '/about',
   },
@@ -635,7 +636,7 @@ const homepage = {
       enabled: true,
     },
     whyUs: {
-      heading: 'Why Choose Karigor Decore',
+      heading: 'Why Choose Decora',
       subheading: 'What sets our work apart on every project.',
       enabled: true,
       items: [
@@ -663,9 +664,9 @@ const homepage = {
     secondaryLink: '/contact',
   },
   seo: {
-    title: 'Karigor Decore | Modern Windows, Glass & Aluminum Solutions',
+    title: 'Decora | Modern Windows, Glass & Aluminum Solutions',
     description:
-      'Customized aluminum windows and doors, glass partitions, shower glass and interior decoration. Products and project-based fabrication services in Bangladesh.',
+      'Customized aluminum windows and doors, glass partitions, shower glass and interior decoration. Products and project-based fabrication services in Pakistan.',
   },
 };
 
@@ -701,7 +702,7 @@ const sampleInquiries = [
     subject: 'Office partition quotation',
     service: 'Glass Partition Installation',
     message:
-      'We are setting up a new office on Road 27, Banani. Need glass partitions for 4 cabins and a meeting room. Please share an estimate per square foot.',
+      'We are setting up a new office near Peshawar Ring Road. Need glass partitions for 4 cabins and a meeting room. Please share an estimate per square foot.',
     status: 'in_progress',
     source: 'contact_form',
     daysAgo: 7,
@@ -716,7 +717,7 @@ const sampleQuotes = [
     productService: 'Frameless Glass Door',
     quantity: '6 doors',
     projectType: 'commercial',
-    budget: 'BDT 300,000 - 400,000',
+    budget: 'PKR 300,000 - 400,000',
     message:
       'Need 6 frameless glass doors with floor springs for a restaurant entrance and interior dividers. Please include installation in the quotation.',
     status: 'new',
@@ -730,9 +731,9 @@ const sampleQuotes = [
     productService: 'Custom Window Fabrication',
     quantity: '18 windows',
     projectType: 'residential',
-    budget: 'BDT 500,000+',
+    budget: 'PKR 500,000+',
     message:
-      'Building a duplex house in Purbachal. I have architectural drawings with 18 window openings. Please quote for aluminum windows including mosquito nets.',
+      'Building a duplex house in Hayatabad. I have architectural drawings with 18 window openings. Please quote for aluminum windows including mosquito nets.',
     status: 'reviewed',
     source: 'quote_page',
     daysAgo: 5,

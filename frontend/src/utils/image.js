@@ -26,7 +26,7 @@ export const IMAGE_PLACEHOLDER =
         <line x1="400" y1="180" x2="400" y2="380"/>
         <line x1="270" y1="280" x2="530" y2="280"/>
       </g>
-      <text x="400" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#a39d8f">Karigor Decore</text>
+      <text x="400" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" fill="#a39d8f">Decora</text>
     </svg>`
   );
 

@@ -10,7 +10,7 @@ import { resolveImageUrl } from '../../utils/image';
 
 /** Brand lockup: settings logo if configured, otherwise a monogram mark. */
 export function Brand({ settings }) {
-  const name = settings.companyName || 'Karigor Decore';
+  const name = settings.companyName || 'Decora';
   const initials = name
     .split(' ')
     .map((part) => part[0])

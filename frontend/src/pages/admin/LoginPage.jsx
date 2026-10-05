@@ -24,7 +24,7 @@ export default function LoginPage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
-  const companyName = settings.companyName || 'Karigor Decore';
+  const companyName = settings.companyName || 'Decora';
   useDocumentMeta({ title: `Admin Login | ${companyName}` });
 
   // Where to go after a successful sign-in.

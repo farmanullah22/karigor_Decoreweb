@@ -16,7 +16,7 @@ export default function ServicesPage() {
   const services = data?.items || [];
 
   useDocumentMeta({
-    title: `Services | ${settings.companyName || 'Karigor Decore'}`,
+    title: `Services | ${settings.companyName || 'Decora'}`,
     description:
       'Custom aluminum fabrication, glass installation, windows, doors, partitions and interior decoration services.',
   });

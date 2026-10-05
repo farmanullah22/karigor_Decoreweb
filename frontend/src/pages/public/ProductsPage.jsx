@@ -55,7 +55,7 @@ export default function ProductsPage() {
   const meta = data?.meta;
 
   useDocumentMeta({
-    title: `Products | ${settings.companyName || 'Karigor Decore'}`,
+    title: `Products | ${settings.companyName || 'Decora'}`,
     description:
       settings.defaultMeta?.description ||
       'Browse aluminum windows, doors, glass, partitions and decoration products.',

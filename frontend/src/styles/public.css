@@ -256,11 +256,20 @@
   inset: 0;
 }
 
-.hero__bg img {
+/* Single-slide hero keeps the original slow zoom. In slider mode the
+   animation is applied only to the active slide (see below) so it
+   restarts every time a slide comes back into view. */
+.hero:not(.hero--slider) .hero__bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   animation: hero-zoom 14s var(--ease-out) both;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @keyframes hero-zoom {
@@ -365,6 +374,148 @@
   }
   .hero__scroll {
     display: none;
+  }
+}
+
+/* ===================== Hero slider ===================== */
+
+.hero--slider:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+/* Track holds every slide side by side; the active one is translated
+   into view. Slides are stacked with the track, not scrolled, so the
+   hero keeps a single fixed height. */
+.hero__track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.hero__slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Off-screen slides stay in the DOM but are not painted or focusable. */
+.hero__slide:not(.is-active) {
+  visibility: hidden;
+}
+
+.hero__slide .hero__bg img {
+  transform: scale(1.08);
+}
+
+.hero__slide.is-active .hero__bg img {
+  animation: hero-zoom 14s var(--ease-out) both;
+}
+
+.hero__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(14, 15, 18, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.hero__arrow:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.hero__arrow:focus-visible {
+  outline: 2px solid var(--color-accent-soft);
+  outline-offset: 3px;
+}
+
+.hero__arrow--prev {
+  left: var(--space-6);
+}
+
+.hero__arrow--next {
+  right: var(--space-6);
+}
+
+.hero__arrow--prev:hover {
+  transform: translateY(-50%) translateX(-3px);
+}
+
+.hero__arrow--next:hover {
+  transform: translateY(-50%) translateX(3px);
+}
+
+.hero__dots {
+  position: absolute;
+  bottom: var(--space-10);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.hero__dot {
+  width: 30px;
+  height: 4px;
+  border-radius: 999px;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.34);
+  transition: background var(--transition-base), width var(--transition-base);
+}
+
+.hero__dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.hero__dot.is-active {
+  width: 46px;
+  background: var(--color-accent);
+}
+
+.hero__dot:focus-visible {
+  outline: 2px solid var(--color-accent-soft);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .hero__arrow {
+    width: 38px;
+    height: 38px;
+  }
+  .hero__arrow--prev {
+    left: var(--space-3);
+  }
+  .hero__arrow--next {
+    right: var(--space-3);
+  }
+  .hero__dots {
+    bottom: var(--space-8);
+  }
+  .hero__dot {
+    width: 22px;
+  }
+  .hero__dot.is-active {
+    width: 34px;
   }
 }
 

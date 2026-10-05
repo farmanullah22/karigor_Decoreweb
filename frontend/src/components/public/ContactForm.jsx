@@ -120,7 +120,7 @@ export default function ContactForm({
           className={`form-input${errors.phone ? ' form-input--error' : ''}`}
           type="tel"
           autoComplete="tel"
-          placeholder="+880 1XXX-XXXXXX"
+          placeholder="+92 3XX XXXXXXX"
           value={values.phone}
           onChange={setField('phone')}
         />

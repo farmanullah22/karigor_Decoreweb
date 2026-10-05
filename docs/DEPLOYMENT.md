@@ -1,6 +1,6 @@
-# Deployment Guide - Karigor Decore
+# Deployment Guide - Decora
 
-Production deployment for the Karigor Decore website (React/Vite frontend + Express/MongoDB API).
+Production deployment for the Decora website (React/Vite frontend + Express/MongoDB API).
 
 ## Architecture
 

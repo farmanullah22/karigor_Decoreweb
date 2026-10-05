@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Karigor Decore - placeholder asset generator (dev tool)
+ * Decora - placeholder asset generator (dev tool)
  * -------------------------------------------------------
  * Generates brand-styled placeholder SVGs referenced by the database seed:
  *   - public/seed-images/*.svg   (48 files used by backend/src/seed/data.js)
@@ -941,8 +941,8 @@ function buildSvg({ name, motif, variant, index, total }) {
   const label = labelFor(name, variant);
   const body = fn(variant, t);
   return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${escapeXml(label)} - Karigor Decore placeholder image">
-  <title>${escapeXml(label)} - Karigor Decore placeholder</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${escapeXml(label)} - Decora placeholder image">
+  <title>${escapeXml(label)} - Decora placeholder</title>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="${t.bgA}"/>
@@ -962,14 +962,14 @@ function buildSvg({ name, motif, variant, index, total }) {
   <g font-family="'Sora','Inter',system-ui,sans-serif">
     <rect x="70" y="806" width="46" height="7" rx="3.5" fill="${BRONZE}"/>
     <text x="70" y="858" font-size="30" font-weight="600" fill="${t.text}">${escapeXml(label)}</text>
-    <text x="1130" y="858" font-size="21" fill="${t.textSoft}" text-anchor="end">Karigor Decore - placeholder ${String(index).padStart(2, '0')} / ${total}</text>
+    <text x="1130" y="858" font-size="21" fill="${t.textSoft}" text-anchor="end">Decora - placeholder ${String(index).padStart(2, '0')} / ${total}</text>
   </g>
 </svg>
 `;
 }
 
 const FAVICON = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Karigor Decore">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Decora">
   <rect width="64" height="64" rx="14" fill="#16171b"/>
   <path d="M23 17v30M41 17L25.5 32.5 42 48" fill="none" stroke="#f4f0e8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
   <rect x="45" y="14" width="7" height="7" rx="1.6" fill="#ad8b52"/>

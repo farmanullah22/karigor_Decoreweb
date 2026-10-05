@@ -11,7 +11,7 @@ async function start() {
 
   const server = app.listen(env.port, () => {
     // eslint-disable-next-line no-console
-    console.log(`[server] Karigor Decore API listening on http://localhost:${env.port} (${env.nodeEnv})`);
+    console.log(`[server] Decora API listening on http://localhost:${env.port} (${env.nodeEnv})`);
   });
 
   const shutdown = async (signal) => {

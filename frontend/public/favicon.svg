@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Karigor Decore">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Decora">
   <rect width="64" height="64" rx="14" fill="#16171b"/>
   <path d="M23 17v30M41 17L25.5 32.5 42 48" fill="none" stroke="#f4f0e8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
   <rect x="45" y="14" width="7" height="7" rx="1.6" fill="#ad8b52"/>

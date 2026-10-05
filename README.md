@@ -1,6 +1,6 @@
-# Karigor Decore - Website & Admin Dashboard
+# Decora - Website & Admin Dashboard
 
-Full-stack website for **Karigor Decore** - a windows, doors, glass, aluminum and interior/exterior decoration company in Bangladesh.
+Full-stack website for **Decora** - a windows, doors, glass, aluminum and interior/exterior decoration company in Pakistan.
 
 The business principle behind the site: customers can **buy ready products** (windows, doors, glass, partitions...) *or* **bring their own project** and get a fully customized solution. Both paths are equally supported across the public site and the admin dashboard.
 

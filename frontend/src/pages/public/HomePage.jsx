@@ -199,7 +199,7 @@ export default function HomePage() {
           <div className="container">
             <Reveal>
               <SectionHeading
-                eyebrow="Why Karigor Decore"
+                eyebrow="Why Decora"
                 title={sections.whyUs.heading || 'Why Choose Us'}
                 description={sections.whyUs.subheading}
                 center

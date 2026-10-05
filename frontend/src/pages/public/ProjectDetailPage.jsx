@@ -24,7 +24,7 @@ export default function ProjectDetailPage() {
 
   const project = data?.project;
   const related = data?.related || [];
-  const companyName = settings.companyName || 'Karigor Decore';
+  const companyName = settings.companyName || 'Decora';
 
   useDocumentMeta({
     title: project ? `${project.name} | ${companyName}` : `Projects | ${companyName}`,

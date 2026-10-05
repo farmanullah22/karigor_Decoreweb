@@ -15,7 +15,7 @@ export default function ContactPage() {
   const { settings } = useSettings();
   const { data: servicesData } = useApi(() => servicesApi.list({ limit: 50 }), []);
 
-  const companyName = settings.companyName || 'Karigor Decore';
+  const companyName = settings.companyName || 'Decora';
   const serviceOptions = (servicesData?.items || []).map((service) => ({
     value: service.name,
     label: service.name,

@@ -3,8 +3,10 @@ const { body } = require('express-validator');
 const validate = require('../middleware/validate');
 const { authenticate } = require('../middleware/auth');
 const homepageController = require('../controllers/homepageController');
+const Homepage = require('../models/Homepage');
 
 const router = express.Router();
+const MAX_HERO_SLIDES = Homepage.MAX_HERO_SLIDES || 8;
 
 /** GET /api/homepage - public homepage content + featured items. */
 router.get('/', homepageController.getHomepage);
@@ -18,6 +20,12 @@ router.put(
   authenticate,
   [
     body('hero').optional().isObject(),
+    body('hero.slides').optional().isArray({ max: MAX_HERO_SLIDES }),
+    body('hero.slides.*.heading').optional().isString().trim().isLength({ max: 200 }),
+    body('hero.slides.*.subheading').optional().isString().trim().isLength({ max: 300 }),
+    body('hero.slides.*.description').optional().isString().trim().isLength({ max: 800 }),
+    body('hero.slides.*.backgroundImage').optional().isObject(),
+    body('hero.slides.*.buttons').optional().isArray(),
     body('about').optional().isObject(),
     body('sections').optional().isObject(),
     body('cta').optional().isObject(),

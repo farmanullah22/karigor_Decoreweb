@@ -208,7 +208,7 @@ export default function ProjectFormPage() {
               className="form-input"
               type="text"
               maxLength={160}
-              placeholder="e.g. Dhanmondi, Dhaka"
+              placeholder="e.g. Hayatabad, Peshawar"
               value={form.location}
               onChange={(event) => update('location', event.target.value)}
             />

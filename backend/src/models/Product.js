@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { imageSchema, specificationSchema, softDeleteFields } = require('./common');
 
 /**
- * Product - a physical product offered by Karigor Decore
+ * Product - a physical product offered by Decora
  * (windows, doors, glass, aluminum, partitions, decoration items...).
  */
 const productSchema = new mongoose.Schema(

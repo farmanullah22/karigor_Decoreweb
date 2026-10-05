@@ -11,7 +11,7 @@ export default function WhatsAppFloat() {
 
   const href = whatsappLink(
     settings.whatsapp || settings.phone,
-    `Hello ${settings.companyName || 'Karigor Decore'}, I would like to know more about your products and services.`
+    `Hello ${settings.companyName || 'Decora'}, I would like to know more about your products and services.`
   );
 
   if (!href) return null;

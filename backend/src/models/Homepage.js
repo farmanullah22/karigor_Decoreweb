@@ -10,6 +10,25 @@ const buttonSchema = new mongoose.Schema(
   { _id: false }
 );
 
+/** Hard cap on hero slides, mirrored by the dashboard editor. */
+const MAX_HERO_SLIDES = 8;
+
+/**
+ * One hero slide: its own background image, copy and buttons. The first
+ * slide doubles as the legacy single-hero content (heading/subheading/
+ * description/backgroundImage/buttons) so older consumers keep working.
+ */
+const heroSlideSchema = new mongoose.Schema(
+  {
+    heading: { type: String, default: '', trim: true, maxlength: 200 },
+    subheading: { type: String, default: '', trim: true, maxlength: 300 },
+    description: { type: String, default: '', trim: true, maxlength: 800 },
+    backgroundImage: { type: imageSchema, default: null },
+    buttons: { type: [buttonSchema], default: [] },
+  },
+  { _id: true }
+);
+
 /**
  * Homepage - singleton document holding all editable homepage content:
  * hero, about teaser, section headings, why-choose-us items, CTA and SEO.
@@ -24,6 +43,7 @@ const homepageSchema = new mongoose.Schema(
       description: { type: String, default: '', trim: true, maxlength: 800 },
       backgroundImage: { type: imageSchema, default: null },
       buttons: { type: [buttonSchema], default: [] },
+      slides: { type: [heroSlideSchema], default: [] },
     },
     about: {
       heading: { type: String, default: '', trim: true, maxlength: 200 },
@@ -87,4 +107,9 @@ homepageSchema.statics.getSingleton = async function getSingleton() {
   return homepage;
 };
 
-module.exports = mongoose.model('Homepage', homepageSchema);
+const Homepage = mongoose.model('Homepage', homepageSchema);
+
+/** Exposed so the controller and the dashboard editor share one limit. */
+Homepage.MAX_HERO_SLIDES = MAX_HERO_SLIDES;
+
+module.exports = Homepage;

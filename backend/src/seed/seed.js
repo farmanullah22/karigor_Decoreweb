@@ -228,7 +228,7 @@ async function seedSampleRequests() {
 
 async function run() {
   console.log('----------------------------------------------');
-  console.log(' Karigor Decore - development seed');
+  console.log(' Decora - development seed');
   console.log(' WARNING: this resets seeded collections.');
   console.log('----------------------------------------------');
 

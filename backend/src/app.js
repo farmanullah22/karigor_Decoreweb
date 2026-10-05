@@ -60,7 +60,7 @@ app.use(
 
 // ---------- Routes ----------
 app.get('/api/health', (req, res) => {
-  res.json({ success: true, message: 'Karigor Decore API is running.' });
+  res.json({ success: true, message: 'Decora API is running.' });
 });
 
 app.use('/api', generalLimiter, apiRoutes);

@@ -24,7 +24,7 @@ export default function ServiceDetailPage() {
 
   const service = data?.service;
   const related = data?.related || [];
-  const companyName = settings.companyName || 'Karigor Decore';
+  const companyName = settings.companyName || 'Decora';
 
   useDocumentMeta({
     title: service ? `${service.name} | ${companyName}` : `Services | ${companyName}`,

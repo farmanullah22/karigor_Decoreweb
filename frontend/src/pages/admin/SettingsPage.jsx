@@ -167,7 +167,7 @@ export default function SettingsPage() {
               id="settings-phone"
               className="form-input"
               type="tel"
-              placeholder="+880 1XXX-XXXXXX"
+              placeholder="+92 3XX XXXXXXX"
               value={form.phone}
               onChange={(event) => update('phone', event.target.value)}
             />
@@ -180,7 +180,7 @@ export default function SettingsPage() {
               id="settings-whatsapp"
               className="form-input"
               type="tel"
-              placeholder="+880 1XXX-XXXXXX"
+              placeholder="+92 3XX XXXXXXX"
               value={form.whatsapp}
               onChange={(event) => update('whatsapp', event.target.value)}
             />

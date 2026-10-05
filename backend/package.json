@@ -1,7 +1,7 @@
 {
   "name": "karigor-decore-backend",
   "version": "1.0.0",
-  "description": "REST API for Karigor Decore - windows, glass, aluminum & interior decoration solutions",
+  "description": "REST API for Decora - windows, glass, aluminum & interior decoration solutions",
   "main": "src/server.js",
   "type": "commonjs",
   "private": true,

@@ -48,9 +48,9 @@ export default function ProjectsPage() {
   const meta = data?.meta;
 
   useDocumentMeta({
-    title: `Projects | ${settings.companyName || 'Karigor Decore'}`,
+    title: `Projects | ${settings.companyName || 'Decora'}`,
     description:
-      'Completed aluminum, glass and interior projects - residential, office and commercial work by Karigor Decore.',
+      'Completed aluminum, glass and interior projects - residential, office and commercial work by Decora.',
   });
 
   const selectCategory = (category) => {

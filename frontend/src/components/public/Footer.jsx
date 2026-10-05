@@ -20,7 +20,7 @@ const SOCIAL_ICONS = {
  */
 export default function Footer() {
   const { settings } = useSettings();
-  const name = settings.companyName || 'Karigor Decore';
+  const name = settings.companyName || 'Decora';
   const initials = name
     .split(' ')
     .map((part) => part[0])

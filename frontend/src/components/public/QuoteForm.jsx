@@ -188,7 +188,7 @@ export default function QuoteForm({
           className={`form-input${errors.phone ? ' form-input--error' : ''}`}
           type="tel"
           autoComplete="tel"
-          placeholder="+880 1XXX-XXXXXX"
+          placeholder="+92 3XX XXXXXXX"
           value={values.phone}
           onChange={setField('phone')}
         />
@@ -266,7 +266,7 @@ export default function QuoteForm({
           id={`${fieldId}-budget`}
           className="form-input"
           type="text"
-          placeholder="e.g. BDT 1,50,000 (optional)"
+          placeholder="e.g. PKR 150,000 (optional)"
           value={values.budget}
           onChange={setField('budget')}
         />

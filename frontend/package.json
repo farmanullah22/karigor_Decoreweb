@@ -1,7 +1,7 @@
 {
   "name": "karigor-decore-frontend",
   "version": "1.0.0",
-  "description": "Public website and admin dashboard for Karigor Decore",
+  "description": "Public website and admin dashboard for Decora",
   "private": true,
   "type": "module",
   "scripts": {

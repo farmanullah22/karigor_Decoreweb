@@ -112,7 +112,7 @@ export default function AdminLayout() {
           </span>
           <span>
             <span className="admin-sidebar__brand-name">
-              {settings.companyName || 'Karigor Decore'}
+              {settings.companyName || 'Decora'}
             </span>
             <span className="admin-sidebar__brand-sub">Admin Panel</span>
           </span>

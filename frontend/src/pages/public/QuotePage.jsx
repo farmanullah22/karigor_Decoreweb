@@ -22,7 +22,7 @@ const NEXT_STEPS = [
 export default function QuotePage() {
   const { settings } = useSettings();
   const [searchParams] = useSearchParams();
-  const companyName = settings.companyName || 'Karigor Decore';
+  const companyName = settings.companyName || 'Decora';
 
   const productParam = searchParams.get('product') || '';
   const serviceParam = searchParams.get('service') || '';

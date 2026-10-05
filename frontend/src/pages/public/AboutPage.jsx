@@ -23,7 +23,7 @@ export default function AboutPage() {
 
   const about = data?.homepage?.about;
   const whyUs = data?.homepage?.sections?.whyUs;
-  const companyName = settings.companyName || 'Karigor Decore';
+  const companyName = settings.companyName || 'Decora';
 
   useDocumentMeta({
     title: `About Us | ${companyName}`,

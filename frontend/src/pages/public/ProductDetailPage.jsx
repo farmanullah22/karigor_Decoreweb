@@ -32,7 +32,7 @@ export default function ProductDetailPage() {
     setActiveImage(0);
   }, [slug]);
 
-  const companyName = settings.companyName || 'Karigor Decore';
+  const companyName = settings.companyName || 'Decora';
 
   useDocumentMeta({
     title: product ? `${product.name} | ${companyName}` : `Product | ${companyName}`,
