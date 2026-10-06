@@ -10,6 +10,7 @@ import HeroSlider from '../../components/public/HeroSlider';
 import ProductCard from '../../components/public/ProductCard';
 import ProjectCard from '../../components/public/ProjectCard';
 import ServiceCard from '../../components/public/ServiceCard';
+import HeroSlider from '../../components/public/HeroSlider';
 import { useApi } from '../../hooks/useApi';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import { useSettings } from '../../context/SettingsContext';
@@ -18,6 +19,7 @@ import { homepageApi } from '../../services/endpoints';
 /** Icon rotation for the "why choose us" items (content is dashboard-managed). */
 const WHY_US_ICONS = ['award', 'tool', 'ruler', 'shield', 'tag', 'layers', 'heart', 'sparkle'];
 
+<<<<<<< HEAD
 /**
  * The hero is a slider. Older records only have the single-hero fields, so
  * fall back to building one slide from them - that keeps rendering working
@@ -42,6 +44,8 @@ function toHeroSlides(hero) {
   ];
 }
 
+=======
+>>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
 /**
  * Homepage - every word, image and link on this page is loaded from
  * MongoDB via /api/homepage and can be edited in the dashboard.
@@ -88,8 +92,13 @@ export default function HomePage() {
 
   return (
     <>
+<<<<<<< HEAD
       {/* ================= Hero slider ================= */}
       <HeroSlider slides={heroSlides} />
+=======
+      {/* ================= Hero (slider when multiple slides are published) ================= */}
+      <HeroSlider hero={hero} />
+>>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
 
       {/* ================= Trust strip ================= */}
       {trustItems.length > 0 && (

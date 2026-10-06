@@ -10,6 +10,7 @@ const buttonSchema = new mongoose.Schema(
   { _id: false }
 );
 
+<<<<<<< HEAD
 /** Hard cap on hero slides, mirrored by the dashboard editor. */
 const MAX_HERO_SLIDES = 8;
 
@@ -22,11 +23,22 @@ const heroSlideSchema = new mongoose.Schema(
   {
     heading: { type: String, default: '', trim: true, maxlength: 200 },
     subheading: { type: String, default: '', trim: true, maxlength: 300 },
+=======
+/** One entry in the homepage hero carousel. */
+const heroSlideSchema = new mongoose.Schema(
+  {
+    subheading: { type: String, default: '', trim: true, maxlength: 300 },
+    heading: { type: String, default: '', trim: true, maxlength: 200 },
+>>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
     description: { type: String, default: '', trim: true, maxlength: 800 },
     backgroundImage: { type: imageSchema, default: null },
     buttons: { type: [buttonSchema], default: [] },
   },
+<<<<<<< HEAD
   { _id: true }
+=======
+  { _id: false }
+>>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
 );
 
 /**
@@ -43,6 +55,14 @@ const homepageSchema = new mongoose.Schema(
       description: { type: String, default: '', trim: true, maxlength: 800 },
       backgroundImage: { type: imageSchema, default: null },
       buttons: { type: [buttonSchema], default: [] },
+<<<<<<< HEAD
+=======
+      /**
+       * Optional carousel entries. When two or more slides are published the
+       * public hero renders as a crossfading slider; with zero or one it
+       * renders as the original single hero, so existing content is safe.
+       */
+>>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
       slides: { type: [heroSlideSchema], default: [] },
     },
     about: {
