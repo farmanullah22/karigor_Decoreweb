@@ -5,7 +5,7 @@ const Project = require('../models/Project');
 const asyncHandler = require('../utils/asyncHandler');
 const { sendSuccess } = require('../utils/apiResponse');
 
-const MAX_HERO_SLIDES = Homepage.MAX_HERO_SLIDES || 8;
+const MAX_HERO_SLIDES = 8;
 
 /** Keeps only images that actually point somewhere. */
 function normalizeImage(value) {

@@ -10,7 +10,6 @@ import HeroSlider from '../../components/public/HeroSlider';
 import ProductCard from '../../components/public/ProductCard';
 import ProjectCard from '../../components/public/ProjectCard';
 import ServiceCard from '../../components/public/ServiceCard';
-import HeroSlider from '../../components/public/HeroSlider';
 import { useApi } from '../../hooks/useApi';
 import { useDocumentMeta } from '../../hooks/useDocumentMeta';
 import { useSettings } from '../../context/SettingsContext';

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import ImagePicker from '../../components/admin/ImagePicker';
@@ -183,41 +183,12 @@ export default function HomepagePage() {
       },
     }));
 
-<<<<<<< HEAD
-  const removeSlideButton = (slideIndex, buttonIndex) =>
-=======
-  // --- Hero slides (homepage slider) ---
-  const updateSlide = (index, key, value) =>
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
     setForm((current) => ({
       ...current,
       hero: {
         ...current.hero,
-<<<<<<< HEAD
-        slides: current.hero.slides.map((slide, i) =>
-          i === slideIndex
-            ? { ...slide, buttons: (slide.buttons || []).filter((_, b) => b !== buttonIndex) }
-=======
-        slides: (current.hero.slides || []).map((slide, i) =>
-          i === index ? { ...slide, [key]: value } : slide
-        ),
-      },
-    }));
-
-  const updateSlideButton = (slideIndex, buttonIndex, key, value) =>
-    setForm((current) => ({
-      ...current,
-      hero: {
-        ...current.hero,
-        slides: (current.hero.slides || []).map((slide, i) =>
-          i === slideIndex
-            ? {
-                ...slide,
-                buttons: (slide.buttons || []).map((button, j) =>
-                  j === buttonIndex ? { ...button, [key]: value } : button
-                ),
-              }
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
             : slide
         ),
       },
@@ -230,13 +201,7 @@ export default function HomepagePage() {
         ...current.hero,
         slides: [
           ...(current.hero.slides || []),
-<<<<<<< HEAD
-          { heading: '', subheading: '', description: '', backgroundImage: null, buttons: [] },
-        ].slice(0, MAX_HERO_SLIDES),
-=======
-          { subheading: '', heading: '', description: '', backgroundImage: null, buttons: [] },
-        ],
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
       },
     }));
 
@@ -249,23 +214,7 @@ export default function HomepagePage() {
       },
     }));
 
-<<<<<<< HEAD
-  /** Moves a slide one position up (-1) or down (+1). */
-  const moveSlide = (index, offset) =>
-    setForm((current) => {
-      const slides = [...(current.hero.slides || [])];
-      const target = index + offset;
-      if (target < 0 || target >= slides.length) return current;
-      const [moved] = slides.splice(index, 1);
-      slides.splice(target, 0, moved);
-=======
-  const moveSlide = (index, direction) =>
-    setForm((current) => {
-      const slides = [...(current.hero.slides || [])];
-      const target = index + direction;
-      if (target < 0 || target >= slides.length) return current;
-      [slides[index], slides[target]] = [slides[target], slides[index]];
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
       return { ...current, hero: { ...current.hero, slides } };
     });
 
@@ -273,43 +222,12 @@ export default function HomepagePage() {
     event.preventDefault();
     if (saving || !form) return;
 
-<<<<<<< HEAD
-    // Empty slides and half-filled buttons are dropped before saving.
-    const slides = (form.hero.slides || [])
-      .map((slide) => ({
-        heading: slide.heading || '',
-        subheading: slide.subheading || '',
-        description: slide.description || '',
-        backgroundImage: slide.backgroundImage?.url ? slide.backgroundImage : null,
-        buttons: (slide.buttons || []).filter((button) => button.label?.trim() && button.link?.trim()),
-      }))
-      .filter(
-        (slide) =>
-          slide.backgroundImage || slide.heading.trim() || slide.subheading.trim() || slide.description.trim()
-      );
-=======
-    const cleanButtons = (buttons) =>
-      (buttons || []).filter((button) => button.label?.trim() && button.link?.trim());
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
 
     const payload = {
       hero: {
         ...form.hero,
-<<<<<<< HEAD
-        slides,
-        backgroundImage: slides[0]?.backgroundImage || null,
-=======
-        buttons: cleanButtons(form.hero.buttons),
-        backgroundImage: form.hero.backgroundImage?.url ? form.hero.backgroundImage : null,
-        // Drop empty slides so a half-finished draft never shows a blank panel.
-        slides: (form.hero.slides || [])
-          .map((slide) => ({
-            ...slide,
-            buttons: cleanButtons(slide.buttons),
-            backgroundImage: slide.backgroundImage?.url ? slide.backgroundImage : null,
-          }))
-          .filter((slide) => slide.heading?.trim() || slide.backgroundImage?.url),
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
       },
       about: {
         ...form.about,
@@ -332,7 +250,7 @@ export default function HomepagePage() {
   };
 
   if (loading || (!form && !error)) {
-    return <LoadingBlock label="Loading homepage content…" minHeight="50vh" />;
+    return <LoadingBlock label="Loading homepage contentâ€¦" minHeight="50vh" />;
   }
 
   if (error || !form) {
@@ -961,3 +879,4 @@ export default function HomepagePage() {
     </form>
   );
 }
+

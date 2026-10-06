@@ -610,40 +610,16 @@ const homepage = {
       { label: 'View Our Projects', link: '/projects', variant: 'secondary' },
       { label: 'Contact Us', link: '/contact', variant: 'ghost' },
     ],
-<<<<<<< HEAD
-    // Rotating hero. The first slide mirrors the single-hero fields above;
-    // the controller keeps both in sync when the dashboard is saved.
-    slides: [
-      {
-        heading: 'Modern Windows, Glass & Aluminum Solutions',
-        subheading: 'Decora',
-=======
-    /**
-     * Carousel entries. Two or more slides turn the hero into a slider on the
-     * public homepage; editing these in the dashboard changes the slides.
-     */
     slides: [
       {
         subheading: 'Karigor Decore',
         heading: 'Modern Windows, Glass & Aluminum Solutions',
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
         description:
           'We design, fabricate and install customized windows, doors, glass partitions and interior decoration for homes, offices and commercial spaces. Buy our products - or bring us your project and we will build a solution around it.',
         backgroundImage: { url: IMG('hero-architecture'), alt: 'Modern building facade with large glass windows' },
         buttons: [
           { label: 'Explore Products', link: '/products', variant: 'primary' },
           { label: 'View Our Projects', link: '/projects', variant: 'secondary' },
-<<<<<<< HEAD
-          { label: 'Contact Us', link: '/contact', variant: 'ghost' },
-        ],
-      },
-      {
-        heading: 'Ready-Made Products, Built To Measure',
-        subheading: 'Buy Or Customize',
-        description:
-          'Pick a finished product from our catalog, or bring us your own project - drawings, measurements, ideas - and we will design, fabricate and install the whole solution.',
-        backgroundImage: { url: IMG('product-aluminum-sliding-window'), alt: 'Aluminum sliding window installed in a residential building' },
-=======
         ],
       },
       {
@@ -652,16 +628,14 @@ const homepage = {
         description:
           'Aluminum and UPVC windows, sliding and casement doors, frameless glass doors, toughened and frosted glass - cut, finished and ready to install. No middlemen, no guesswork on quality.',
         backgroundImage: { url: IMG('project-showroom-facade'), alt: 'Showroom facade with large glazed panels' },
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
         buttons: [
           { label: 'Browse Products', link: '/products', variant: 'primary' },
           { label: 'Request a Quote', link: '/quote', variant: 'secondary' },
         ],
       },
       {
-<<<<<<< HEAD
+        subheading: 'Our Workshop',
         heading: 'Fabricated In Our Own Workshop',
-        subheading: 'Quality You Can Measure',
         description:
           'From the first site measurement to the final handover, our own fabrication and installation teams control quality at every step - no outsourcing, no surprises.',
         backgroundImage: { url: IMG('about-workshop'), alt: 'Decora fabrication workshop' },
@@ -671,15 +645,6 @@ const homepage = {
         ],
       },
       {
-        heading: 'Spaces We Have Transformed',
-        subheading: 'Completed Projects',
-        description:
-          'Residential, office and commercial work - aluminum windows, frameless glass doors, partitions, railings and full interior decoration packages.',
-        backgroundImage: { url: IMG('project-office-partition'), alt: 'Glass office partition installed in a corporate office' },
-        buttons: [
-          { label: 'See Our Projects', link: '/projects', variant: 'primary' },
-          { label: 'Contact Us', link: '/contact', variant: 'ghost' },
-=======
         subheading: 'Bring Your Own Project',
         heading: 'Fully Custom Fabrication & Installation',
         description:
@@ -688,7 +653,9 @@ const homepage = {
         buttons: [
           { label: 'Start Your Project', link: '/quote', variant: 'primary' },
           { label: 'Our Services', link: '/services', variant: 'secondary' },
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+        ],
+      },
+    ],
         ],
       },
     ],
