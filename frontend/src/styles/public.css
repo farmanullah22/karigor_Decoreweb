@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    Public website styles: navbar, hero, sections, footer, detail
    pages, galleries, filters, contact layout
    ============================================================ */
@@ -257,42 +257,14 @@
   overflow: hidden;
 }
 
-<<<<<<< HEAD
-/* Single-slide hero keeps the original slow zoom. In slider mode the
-animation is applied only to the active slide (see below) so it
-restarts every time a slide comes back into view. */
-.hero:not(.hero--slider) .hero__bg img {
-  animation: hero-zoom 14s var(--ease-out) both;
-  }
-
-/* The photo is pinned to the exact hero box, so it is always full-bleed at
-   100% width and height no matter its own aspect ratio. `cover` crops rather
-   than letterboxes, and the global img reset's max-width is lifted so it can
-   never be capped below the hero width. */
-.hero__bg img {
-=======
-/* Every slide image is stacked and crossfaded. With a single slide the one
-   image simply stays visible, so no separate single-hero rule is needed. */
-.hero__bg-image {
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   max-width: none;
   object-fit: cover;
-<<<<<<< HEAD
-  object-position: center;
-  display: block;
-=======
-  opacity: 0;
-  transition: opacity 900ms var(--ease-out);
-}
-
-.hero__bg-image.is-active {
-  opacity: 1;
-  animation: hero-zoom 14s var(--ease-out) both;
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
 }
 
 @keyframes hero-zoom {
@@ -1893,3 +1865,4 @@ restarts every time a slide comes back into view. */
   color: var(--color-accent-soft);
   line-height: 1;
 }
+

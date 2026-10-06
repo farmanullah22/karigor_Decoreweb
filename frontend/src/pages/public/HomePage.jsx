@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 
 import Button from '../../components/common/Button';
 import Icon from '../../components/common/Icon';
@@ -18,33 +18,7 @@ import { homepageApi } from '../../services/endpoints';
 /** Icon rotation for the "why choose us" items (content is dashboard-managed). */
 const WHY_US_ICONS = ['award', 'tool', 'ruler', 'shield', 'tag', 'layers', 'heart', 'sparkle'];
 
-<<<<<<< HEAD
-/**
- * The hero is a slider. Older records only have the single-hero fields, so
- * fall back to building one slide from them - that keeps rendering working
- * before anything is migrated in the dashboard.
- */
-function toHeroSlides(hero) {
-  if (!hero) return [];
-
-  const slides = (hero.slides || []).filter(
-    (slide) => slide && (slide.backgroundImage || slide.heading || slide.subheading || slide.description)
-  );
-  if (slides.length > 0) return slides;
-
-  return [
-    {
-      heading: hero.heading,
-      subheading: hero.subheading,
-      description: hero.description,
-      backgroundImage: hero.backgroundImage,
-      buttons: hero.buttons || [],
-    },
-  ];
-}
-
-=======
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
 /**
  * Homepage - every word, image and link on this page is loaded from
  * MongoDB via /api/homepage and can be edited in the dashboard.
@@ -63,7 +37,7 @@ export default function HomePage() {
     description: homepage?.seo?.description || settings.defaultMeta?.description,
   });
 
-  if (loading) return <LoadingBlock minHeight="80vh" label="Loading homepage…" />;
+  if (loading) return <LoadingBlock minHeight="80vh" label="Loading homepageâ€¦" />;
   if (error || !homepage) {
     return (
       <div className="section container">
@@ -91,13 +65,7 @@ export default function HomePage() {
 
   return (
     <>
-<<<<<<< HEAD
-      {/* ================= Hero slider ================= */}
-      <HeroSlider slides={heroSlides} />
-=======
-      {/* ================= Hero (slider when multiple slides are published) ================= */}
-      <HeroSlider hero={hero} />
->>>>>>> c298e2ea2305420858c206e18e92f44e90399a10
+ c298e2ea2305420858c206e18e92f44e90399a10
 
       {/* ================= Trust strip ================= */}
       {trustItems.length > 0 && (
@@ -296,3 +264,4 @@ export default function HomePage() {
     </>
   );
 }
+
